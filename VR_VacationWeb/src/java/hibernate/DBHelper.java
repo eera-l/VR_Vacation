@@ -19,6 +19,4 @@ public class DBHelper {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    
-    
 }
