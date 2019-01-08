@@ -51,7 +51,8 @@ Contributor(s):
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <mapping resource="hibernate/Package.hbm.xml"/>
     <mapping resource="hibernate/Order.hbm.xml"/>
+    <mapping resource="hibernate/Experience.hbm.xml"/>
+    <mapping resource="hibernate/Destination.hbm.xml"/>
     <mapping resource="hibernate/User.hbm.xml"/>
-    <mapping resource="hibernate/Extra.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

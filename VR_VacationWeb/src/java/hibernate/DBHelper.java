@@ -6,15 +6,16 @@
 package hibernate;
 
 import org.hibernate.Session;
+
 /**
  *
  * @author Federica
  */
-public class HBHelper {
+public class DBHelper {
     
     Session session = null;
-    
-    public HBHelper() {
+
+    public DBHelper() {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     

@@ -1,4 +1,5 @@
 /VR_VacationWeb/build/
+<<<<<<< HEAD
 nbproject/private/
 build/
 nbbuild/
@@ -6,3 +7,6 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+=======
+/VR_VacationWeb/dist/
+>>>>>>> b732e708c67428972645ca81a3435984a6187107
