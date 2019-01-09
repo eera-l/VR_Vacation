@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index
-    Created on : 1-gen-2019, 17.27.54
-    Author     : Federica
+    Document   : shoppingCart
+    Created on : 05/01/2019, 9:14:54 PM
+    Author     : Felicity
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>VR Vacation</title>
+        <title>VR Vacations - Shopping Cart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
@@ -33,7 +33,7 @@
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li>
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/ShoppingCart"><span class="fa fa-shopping-cart"></span>     </a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/ShoppingCart"><span class="fa fa-shopping-cart"></span> Cart</a>
                     </li>
                     <li>
                         <a class="navbar-brand" href="${pageContext.request.contextPath}/SignUp"><span class="fa fa-user"></span> Sign Up</a>
@@ -44,12 +44,9 @@
                 </ul>  
             </div>
         </nav>
-        <div class="container">
-            <h1>Live your dream vacation from the comfort of your home</h1>
-            <p>This is some text.</p> 
-            <iframe src="https://360player.io/p/wqosLr/" frameborder="0" width=560 height=315 class="img-fluid" allowfullscreen data-token="k6f7rb"></iframe>
+        <div class="container-fluid">
+            <h1>Shopping Cart</h1>
         </div>
-        <script src="https://360player.io/static/dist/scripts/embed.js" async></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
