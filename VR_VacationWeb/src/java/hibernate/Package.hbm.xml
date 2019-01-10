@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-gen-2019 17.04.46 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.Package" table="package" catalog="vr_vacation" optimistic-lock="version">
+        <id name="packageId" type="java.lang.Integer">
+            <column name="package_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="destination" class="hibernate.Destination" fetch="select">
+            <column name="destination_destination_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="order" class="hibernate.Order" fetch="select">
+            <column name="order_order_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="16777215" not-null="true" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="price" precision="7" not-null="true" />
+        </property>
+        <property name="imagePath" type="string">
+            <column name="image_path" length="150" />
+        </property>
+        <set name="experiences" table="experience" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="package_package_id" />
+            </key>
+            <one-to-many class="hibernate.Experience" />
+        </set>
+    </class>
+</hibernate-mapping>
