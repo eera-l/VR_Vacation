@@ -1,5 +1,5 @@
 package hibernate;
-// Generated 7-gen-2019 21.46.25 by Hibernate Tools 4.3.1
+// Generated 10-gen-2019 17.04.43 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,6 +14,7 @@ public class Destination  implements java.io.Serializable {
      private int destinationId;
      private String name;
      private String description;
+     private String imagePath;
      private Set<Package> packages = new HashSet<Package>(0);
      private Set<Experience> experiences = new HashSet<Experience>(0);
 
@@ -26,10 +27,11 @@ public class Destination  implements java.io.Serializable {
         this.name = name;
         this.description = description;
     }
-    public Destination(int destinationId, String name, String description, Set<Package> packages, Set<Experience> experiences) {
+    public Destination(int destinationId, String name, String description, String imagePath, Set<Package> packages, Set<Experience> experiences) {
        this.destinationId = destinationId;
        this.name = name;
        this.description = description;
+       this.imagePath = imagePath;
        this.packages = packages;
        this.experiences = experiences;
     }
@@ -54,6 +56,13 @@ public class Destination  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getImagePath() {
+        return this.imagePath;
+    }
+    
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
     public Set<Package> getPackages() {
         return this.packages;

@@ -41,9 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="vr_vacation"/>
-  <table-filter match-name="experience"/>
-  <table-filter match-name="order"/>
-  <table-filter match-name="destination"/>
   <table-filter match-name="user"/>
   <table-filter match-name="package"/>
+  <table-filter match-name="destination"/>
+  <table-filter match-name="experience"/>
+  <table-filter match-name="order"/>
 </hibernate-reverse-engineering>

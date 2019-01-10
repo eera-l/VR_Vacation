@@ -1,5 +1,5 @@
 package hibernate;
-// Generated 7-gen-2019 21.46.25 by Hibernate Tools 4.3.1
+// Generated 10-gen-2019 17.04.43 by Hibernate Tools 4.3.1
 
 
 
@@ -15,6 +15,7 @@ public class Experience  implements java.io.Serializable {
      private String name;
      private boolean isExtra;
      private String description;
+     private String imagePath;
 
     public Experience() {
     }
@@ -27,13 +28,14 @@ public class Experience  implements java.io.Serializable {
         this.isExtra = isExtra;
         this.description = description;
     }
-    public Experience(int experienceId, Destination destination, Package pack, String name, boolean isExtra, String description) {
+    public Experience(int experienceId, Destination destination, Package pack, String name, boolean isExtra, String description, String imagePath) {
        this.experienceId = experienceId;
        this.destination = destination;
        this.pack = pack;
        this.name = name;
        this.isExtra = isExtra;
        this.description = description;
+       this.imagePath = imagePath;
     }
    
     public int getExperienceId() {
@@ -77,6 +79,13 @@ public class Experience  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getImagePath() {
+        return this.imagePath;
+    }
+    
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
 

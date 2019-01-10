@@ -11,7 +11,11 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${file.reference.mysql-connector-java-8.0.13.jar}</file>
+=======
+                    <file>${file.reference.mysql-connector-java-5.1.28-bin.jar}</file>
+>>>>>>> e77db919e0363fd1a94df3637e4068cd58ce875c
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
