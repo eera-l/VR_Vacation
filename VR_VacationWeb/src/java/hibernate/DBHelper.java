@@ -304,10 +304,10 @@ public class DBHelper {
         }
     }
     
-    public boolean createUser(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry) {
+    public boolean createUser(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry, String creditCardNumber) {
         
         session = HibernateUtil.getSessionFactory().openSession();
-        User user = new User(emailAddress, username, password, firstName, lastName, phoneNumber, addressStreet, addressZipCode, addressCity, addressCountry);
+        User user = new User(emailAddress, username, password, firstName, lastName, phoneNumber, addressStreet, addressZipCode, addressCity, addressCountry, creditCardNumber);
         try {
             session.beginTransaction();
             session.save(user);            

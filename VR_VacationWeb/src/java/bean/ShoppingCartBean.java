@@ -25,7 +25,7 @@ public class ShoppingCartBean {
         }
     }
 
-    public boolean removeItems(Package pack) {
+    public boolean removeItem(Package pack) {
         
         if (packages.size() > 0 && packages.contains(pack)) {
             packages.remove(pack);
