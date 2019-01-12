@@ -404,5 +404,47 @@ public class DBHelper {
         return ok;
     }
     
+    public boolean assignPackageToExperience(Package pack, Experience exp) {
+        boolean ok = false;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            exp.setPackage(pack);
+            session.beginTransaction();
+            session.merge(exp);
+            session.getTransaction().commit();
+            ok = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        
+        return ok;
+    }
+    
+    public boolean assignPackageToExperience(int packId, int expId) {
+        boolean ok = false;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Package pack = findPackageById(packId);
+        session = HibernateUtil.getSessionFactory().openSession();
+        Experience exp = findExperienceById(expId);
+       session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            exp.setPackage(pack);
+            session.beginTransaction();
+            session.merge(exp);
+            session.getTransaction().commit();
+            ok = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        
+        return ok;
+    }
+    
     
 }

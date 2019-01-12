@@ -8,6 +8,7 @@ import hibernate.Order;
 import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 /**
  *
@@ -61,6 +62,7 @@ public class ShoppingCartBean {
         
         if (baBean.contactBank(user.getCreditCardNumber())) {
             Order order = new Order(user, getTotal(), new Date(), true);
+            order.setPackages((Set<Package>) packages);
             DBHelper dbHelper = new DBHelper();
             for (int i = 0; i < packages.size(); i++) {
                 dbHelper.assignOrderToPackage(packages.get(i), order);
