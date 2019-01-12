@@ -1,9 +1,11 @@
 package bean;
 
+import hibernate.DBHelper;
 import java.util.ArrayList;
 import javax.ejb.Stateful;
 import hibernate.Package;
 import hibernate.Order;
+import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -17,7 +19,13 @@ public class ShoppingCartBean {
     // "Insert Code > Add Business Method")
     
     ArrayList<Package> packages = new ArrayList<>();
-    Order order;
+    User user;
+    
+    public ShoppingCartBean() {}
+    
+    public ShoppingCartBean(User user) {
+        this.user = user;
+    }
 
     public void addItems(Package... packages) {
         for (Package p : packages) {
@@ -47,8 +55,27 @@ public class ShoppingCartBean {
         return total;
     }
 
-    public void checkOut() {
-        order = new Order(null, getTotal(), new Date(), true);
+    public String checkOut() {
+        
+        BankAppBean baBean = new BankAppBean();
+        
+        if (baBean.contactBank(user.getCreditCardNumber())) {
+            Order order = new Order(user, getTotal(), new Date(), true);
+            DBHelper dbHelper = new DBHelper();
+            for (int i = 0; i < packages.size(); i++) {
+                dbHelper.assignOrderToPackage(packages.get(i), order);
+            }
+            dbHelper.createOrder(order);
+            return "Order completed successfully!";
+        } else {
+            return "Bank operation not approved. The order has been cancelled.";
+        }
+    }
+    
+    public void sendEmailConfirmationToUser() {
+        EmailBean eBean = new EmailBean();
+        
+        
     }
     
    

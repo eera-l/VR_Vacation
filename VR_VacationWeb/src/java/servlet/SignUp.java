@@ -1,5 +1,7 @@
 package servlet;
 
+import bean.SignUpBean;
+import hibernate.Main;
 import hibernate.User;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -16,12 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SignUp", urlPatterns = {"/SignUp"})
 public class SignUp extends HttpServlet {
 
-    @EJB
-    private bean.SignUp signUp;
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String email = request.getParameter("email");
+        
+        SignUpBean su = new SignUpBean();
+        
+        if (su.checkIfUserExists(email)) {
+            System.out.println("User exists");
+        } else {
+            System.out.println("User doesn't exist");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,13 +75,14 @@ public class SignUp extends HttpServlet {
         String zipCode = request.getParameter("zipCode");
         String city = request.getParameter("city");
         String country = request.getParameter("country");
+        String ccNumber = request.getParameter("ccNumber");
 
         //TO:DO
         //if user doesnt already exists
         
         //create new user
         User user = new User(email, userName, password, firstName, lastName,
-                phoneNumber, street, zipCode, city, country
+                phoneNumber, street, zipCode, city, country, ccNumber
         );
 
         //IF error in form 
@@ -93,6 +104,7 @@ public class SignUp extends HttpServlet {
             // redirect to index page?
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+        
     }
 
     /**
