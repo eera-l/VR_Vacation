@@ -50,7 +50,8 @@
                 </ul>  
             </div>
         </nav>
-        <div class="container-fluid">
+                    <a href='#' style="position: fixed;" onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
+        <div class="container-fluid" style="padding:0% 28%;">
             <br><br><h1>FAQ</h1><br><br>
             <h3>On which consoles can I use VR Vacation?</h3><br>
             <p>You can use it on Oculus GO, HTC Vive and PlayStation VR systems.</p><br>
@@ -71,7 +72,7 @@
             <h3>How can I contact you?</h3><br>
             <p>If you have any questions you're welcome to contact us by sending an email to <a href="vr_vacation@hotmail.com">vr_vacation@hotmail.com</a>.</p><br><br>
         </div>
-                     <a href='#' onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
+                     
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>

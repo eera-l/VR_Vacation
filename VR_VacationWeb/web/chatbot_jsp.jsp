@@ -8,6 +8,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            #textinput {
+                padding: 5px; border: 1px solid #2f3338; -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+            }
+            
+            #submitbutton {
+	background-color:#ededed;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+        #submitbutton:hover {
+	background-color:#dfdfdf;
+        }
+        #submitbutton:active {
+	position:relative;
+	top:1px;
+        }
+
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>VR Vacation - Chatbot</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,33 +47,9 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">VR Vacations</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarHamburger">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarHamburger">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Packages">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/Destinations">Destinations</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-right">
-                    <li>
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/ShoppingCart"><span class="fa fa-shopping-cart"></span> Cart</a>
-                    </li>
-                    <li>
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/SignUp"><span class="fa fa-user"></span> Sign Up</a>
-                    </li>
-                    <li>
-                        <a class="navbar-brand" href="${pageContext.request.contextPath}/LogIn"><span class="fa fa-sign-in"></span> Login</a>
-                    </li>
-                </ul>  
-            </div>
+            
+            
+            
         </nav>
         <div class="container-fluid">
             <h1>Chatbot</h1>
@@ -52,15 +59,15 @@
         }
         %>
         <form action="ChatbotServlet" method="POST">
-            <b>Your query: </b> <input type="text" name="query" value="<%= query %>" />
-            <input type="submit" value="Send" />
+            <b>Your query: </b> <input type="text" name="query" value="<%= query %>" id="textinput"/>
+            <input type="submit" value="Send" id="submitbutton" />
         </form>
               <%@ page import="java.io.*, javax.servlet.jsp.JspWriter"%>
 <% JspWriter localOut = out; 
 
-        localOut.println("<b>Answer: </b>");
+        localOut.println("<div><b>Answer: </b>");
 	if (request.getAttribute("answer") != null) {
-            localOut.println("<h3>" + request.getAttribute("answer") + "</h3>");
+            localOut.println("<h3>" + request.getAttribute("answer") + "</h3></div>");
         }
 
 %>
