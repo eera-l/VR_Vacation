@@ -9,9 +9,17 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>ChatbotServlet</servlet-name>
+        <servlet-class>servlet.ChatbotServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChatbotServlet</servlet-name>
+        <url-pattern>/ChatbotServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@
  */
 package bean;
 
+import chatbot.Chatbot;
 import javax.ejb.Stateful;
 
 /**
@@ -16,4 +17,12 @@ public class ChatBotBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+    
+    public String processUserQuery(String query) {
+        
+        Chatbot cb = new Chatbot();
+        cb.readAllLines();
+        
+        return cb.answer(query);
+    }
 }
