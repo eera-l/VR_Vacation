@@ -1,5 +1,6 @@
 package bean;
 
+import hibernate.DBHelper;
 import javax.ejb.Stateful;
 
 /**
@@ -8,11 +9,19 @@ import javax.ejb.Stateful;
  */
 @Stateful
 public class LogInBean {
+    
+    DBHelper db = null;
+    boolean loggedIn = false;
 
-    public boolean authenticateUser() {
-        return false;
+    public boolean authenticateUser(String email, String password) {
+        db = new DBHelper();
+        if(db.checkLogIn(email, password)){
+            loggedIn = true;
+        }
+        return loggedIn;
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    public boolean isLoggedIn(){
+        return loggedIn;
+    }
 }

@@ -1,6 +1,7 @@
 package bean;
 
 import hibernate.DBHelper;
+import hibernate.User;
 import javax.ejb.Stateless;
 
 /**
@@ -10,18 +11,17 @@ import javax.ejb.Stateless;
 @Stateless
 public class SignUpBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    DBHelper db = null;
     
     //check db User table to see if user already exists
     public boolean checkIfUserExists(String email) {
-        DBHelper dbhelper = new DBHelper();
-        
-        return dbhelper.checkIfUserExists(email);
+        db = new DBHelper();
+        return db.checkIfUserExists(email);
     }
 
     //add new user to db
-    public boolean addNewUser() {
-        return false;
+    public boolean addNewUser(User user) {
+        db = new DBHelper();
+        return db.createUser(user);
     }
 }

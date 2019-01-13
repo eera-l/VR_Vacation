@@ -48,13 +48,12 @@
         <div class="container-fluid">
             <h1>Packages</h1>
             <div class="card-deck">
-                <c:forEach var="img" items="${imageList}">
-                    <div class="card">
-                        <a href="${pageContext.request.contextPath}/ID_Package?img=${img}"><img src="${pageContext.request.contextPath}/${img}" class="card-img-top" alt="image"></a>
+                <c:forEach var="package" items="${packages}">
+                    <div class="card" style="width: 18rem;">
+                        <img src="${pageContext.request.contextPath}/${package.imagePath}" class="card-img-top" alt="image" >
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">${message}</p>
-                            <p class="card-text"><small class="text-muted">${message}</small></p>
+                            <h5 class="card-title">${package.name}</h5>
+                            <a href="${pageContext.request.contextPath}/ID_Package?packageId=${package.packageId}" class="btn btn-primary">See more...</a>
                         </div>
                     </div>
                 </c:forEach> 

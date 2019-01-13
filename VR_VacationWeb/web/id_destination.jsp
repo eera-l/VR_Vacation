@@ -45,7 +45,16 @@
             </div>
         </nav>
         <div class="container-fluid">
-            <h1>Destination</h1>
+            <div class="container-fluid">
+                <div class="card" >
+                     <iframe src="${destination.imagePath}" frameborder="0" width=308 height=1263 class="img-fluid card-img-top" allowfullscreen data-token="k6f7rb"></iframe>
+                    <div class="card-body">
+                        <h5 class="card-title">${destination.name}</h5>
+                        <p class="card-text">${destination.description}</p>
+                        <p class="card-text"><small class="text-muted">${package.price}</small> SEK</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

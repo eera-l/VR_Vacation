@@ -12,21 +12,18 @@ import javax.ejb.Stateless;
 @Stateless
 public class PackageBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    DBHelper db = null;
     
     
     //get all packages from hibernateDB service
     public List<Package> getAllPackages() {
-        DBHelper dbHelper = new DBHelper();
-        
-        return dbHelper.findAllPackages();
+        db = new DBHelper();
+        return db.findAllPackages();
     }
 
     //get package with ID from hibernateDB service
     public Package getPackageWithID(int packageID) {
-        DBHelper dbHelper = new DBHelper();
-        
-        return dbHelper.findPackageById(packageID);
+        db = new DBHelper();
+        return db.findPackageById(packageID);
     }
 }

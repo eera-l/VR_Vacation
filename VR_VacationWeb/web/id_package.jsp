@@ -45,8 +45,14 @@
     </nav>
     <body>
         <div class="container-fluid">
-            <h1>More information on package</h1>
-            <img src="${pageContext.request.contextPath}/${img}" alt="image">
+            <div class="card" >
+                <img src="${pageContext.request.contextPath}/${package.imagePath}" class="card-img-top" alt="image"></a>
+                <div class="card-body">
+                    <h5 class="card-title">${package.name}</h5>
+                    <p class="card-text">${package.description}</p>
+                    <p class="card-text"><small class="text-muted">${package.price}</small> SEK</p>
+                </div>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

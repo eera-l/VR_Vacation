@@ -44,8 +44,8 @@
                 </ul>  
             </div>
         </nav>
-        <div class="container">
-            <h1>Live your dream vacation from the comfort of your home</h1>
+        <div class="container text-center">
+            <h1>Live your dream vacation from the comfort of your own home</h1>
             <p>This is some text.</p> 
             <iframe src="https://360player.io/p/wqosLr/" frameborder="0" width=560 height=315 class="img-fluid" allowfullscreen data-token="k6f7rb"></iframe>
         </div>
