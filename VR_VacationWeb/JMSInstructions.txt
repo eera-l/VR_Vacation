@@ -1,0 +1,3 @@
+asadmin> create-jms-resource --restype javax.jms.QueueConnectionFactory --description "connection factory for confirmation of purchase of VR vacations" --property ClientID=MyID jms/vrQueueConnectionFactory
+
+asadmin> create-jms-resource --restype javax.jms.Queue --property Name=VRQueue jms/vrQueue

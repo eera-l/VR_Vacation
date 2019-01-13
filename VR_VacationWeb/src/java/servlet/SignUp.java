@@ -1,10 +1,10 @@
 package servlet;
 
+import bean.ShoppingCartBean;
 import bean.SignUpBean;
 import hibernate.Main;
 import hibernate.User;
 import java.io.IOException;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,16 +22,20 @@ public class SignUp extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String email = request.getParameter("email");
         
-        SignUpBean su = new SignUpBean();
+        ShoppingCartBean scb = new ShoppingCartBean();
+        scb.sendJMSMessageToVrQueue(email);
+        
+        
+        /*SignUpBean su = new SignUpBean();
         
         if (su.checkIfUserExists(email)) {
             System.out.println("User exists");
         } else {
             System.out.println("User doesn't exist");
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

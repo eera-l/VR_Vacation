@@ -50,7 +50,7 @@
                 </ul>  
             </div>
         </nav>
-                    <a href='#' style="position: fixed;" onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
+                    <a href='#' style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;" onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
         <div class="container-fluid" style="padding:0% 28%;">
             <br><br><h1>FAQ</h1><br><br>
             <h3>On which consoles can I use VR Vacation?</h3><br>

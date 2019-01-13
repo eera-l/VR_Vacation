@@ -9,6 +9,13 @@ import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
+import javax.jms.ConnectionFactory;
+import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 /**
  *
@@ -16,12 +23,13 @@ import java.util.Set;
  */
 @Stateful
 public class ShoppingCartBean {
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
     ArrayList<Package> packages = new ArrayList<>();
     User user;
-    
+   
     public ShoppingCartBean() {}
     
     public ShoppingCartBean(User user) {
@@ -68,7 +76,10 @@ public class ShoppingCartBean {
                 dbHelper.assignOrderToPackage(packages.get(i), order);
             }
             dbHelper.createOrder(order);
-            return "Order completed successfully!";
+            
+            String message = "Order nr. " + order.getOrderId() + "completed successfully by " + user.getFirstName() + " " + user.getLastName();
+            sendJMSMessageToVrQueue(message);
+            return message;
         } else {
             return "Bank operation not approved. The order has been cancelled.";
         }
@@ -78,6 +89,26 @@ public class ShoppingCartBean {
         EmailBean eBean = new EmailBean();
         
         
+    }
+
+    public void sendJMSMessageToVrQueue(String message) {
+        
+        try{
+            Context ctx = new InitialContext();           
+            ConnectionFactory     connectionFactory = (ConnectionFactory)ctx.lookup("jms/vrQueueConnectionFactory");
+            Queue     queue = (Queue)ctx.lookup("jms/vrQueue");            
+            
+            javax.jms.Connection  connection = connectionFactory.createConnection();
+            javax.jms.Session        session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
+            MessageProducer messageProducer = session.createProducer(queue);
+            TextMessage JMSmessage = session.createTextMessage();
+            JMSmessage.setText(message);
+            System.out.println( "***** Shopping Bean: Sent the message to YourQueue:"+ JMSmessage.getText());
+            messageProducer.send(JMSmessage);
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+       
     }
     
    
