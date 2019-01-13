@@ -48,6 +48,8 @@
             <h1>Live your dream vacation from the comfort of your own home</h1>
             <p>This is some text.</p> 
             <iframe src="https://360player.io/p/wqosLr/" frameborder="0" width=560 height=315 class="img-fluid" allowfullscreen data-token="k6f7rb"></iframe>
+            <a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
+ onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=500");' title='Chatbot'>Chatbot</a> 
         </div>
         <script src="https://360player.io/static/dist/scripts/embed.js" async></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
