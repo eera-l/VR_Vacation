@@ -21,13 +21,14 @@ public class User  implements java.io.Serializable {
      private String addressZipCode;
      private String addressCity;
      private String addressCountry;
+     private String creditCardNumber;
      private Set<Order> orders = new HashSet<Order>(0);
 
     public User() {
     }
 
 	
-    public User(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry) {
+    public User(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry, String creditCardNumber) {
         this.emailAddress = emailAddress;
         this.username = username;
         this.password = password;
@@ -38,8 +39,9 @@ public class User  implements java.io.Serializable {
         this.addressZipCode = addressZipCode;
         this.addressCity = addressCity;
         this.addressCountry = addressCountry;
+        this.creditCardNumber = creditCardNumber;
     }
-    public User(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry, Set<Order> orders) {
+    public User(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry, String creditCardNumber, Set<Order> orders) {
        this.emailAddress = emailAddress;
        this.username = username;
        this.password = password;
@@ -50,6 +52,7 @@ public class User  implements java.io.Serializable {
        this.addressZipCode = addressZipCode;
        this.addressCity = addressCity;
        this.addressCountry = addressCountry;
+       this.creditCardNumber = creditCardNumber;
        this.orders = orders;
     }
    
@@ -122,6 +125,14 @@ public class User  implements java.io.Serializable {
     
     public void setAddressCountry(String addressCountry) {
         this.addressCountry = addressCountry;
+    }
+    
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+    
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
     public Set<Order> getOrders() {
         return this.orders;

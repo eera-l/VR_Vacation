@@ -1,6 +1,9 @@
 package hibernate;
 // Generated 13-Jan-2019 15:00:45 by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
+
+
 
 import java.math.BigDecimal;
 
