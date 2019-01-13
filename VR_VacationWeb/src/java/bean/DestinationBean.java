@@ -2,7 +2,6 @@ package bean;
 
 import java.util.List;
 import javax.ejb.Stateless;
-import java.util.ArrayList;
 
 /**
  *

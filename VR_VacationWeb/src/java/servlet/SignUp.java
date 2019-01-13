@@ -2,9 +2,9 @@ package servlet;
 
 import bean.ShoppingCartBean;
 import bean.SignUpBean;
-import hibernate.Main;
 import hibernate.User;
 import java.io.IOException;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SignUp", urlPatterns = {"/SignUp"})
 public class SignUp extends HttpServlet {
 
+    @EJB
+    private SignUpBean signUpBean;
+    
+    
+
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,13 +34,11 @@ public class SignUp extends HttpServlet {
         scb.sendJMSMessageToVrQueue(email);
         
         
-        /*SignUpBean su = new SignUpBean();
-        
-        if (su.checkIfUserExists(email)) {
+        if (signUpBean.checkIfUserExists("felicity.thompson@hotmail.com")) {
             System.out.println("User exists");
         } else {
             System.out.println("User doesn't exist");
-        }*/
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -106,6 +109,7 @@ public class SignUp extends HttpServlet {
             
             //if transaction with db success
             // redirect to index page?
+            
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         
