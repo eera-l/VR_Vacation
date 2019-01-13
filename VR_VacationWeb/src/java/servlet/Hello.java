@@ -1,11 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
-import bean.PackageBean;
-import java.io.File;
+import hibernate.DBHelper;
+import hibernate.User;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,14 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Felicity
+ * @author felic
  */
-@WebServlet(name = "Packages", urlPatterns = {"/Packages"})
-public class Packages extends HttpServlet {
-
-    @EJB
-    private PackageBean packageBean;
-    
+@WebServlet(name = "Hello", urlPatterns = {"/Hello"})
+public class Hello extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,6 +34,12 @@ public class Packages extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        DBHelper db = new DBHelper();
+        User user = db.findUserByEmail("felicity.thompson@hotmail.com");
+     
+         request.setAttribute("user", user);
+        request.getRequestDispatcher("hello.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,21 +54,7 @@ public class Packages extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<String> images = new ArrayList();
         processRequest(request, response);
-        
-        //TO:DO need to pass all packges as objects in a list with ID 
-        //that can be referenced from button click in JSP
-        //create bean for calling DB
-        
-        //send test images
-        images.add("testImages/birds.jpg");
-        images.add("testImages/leaf.jpg");
-        images.add("testImages/snowBall.jpg");
-        request.setAttribute("imageList", images);
-        request.setAttribute("message", "hello from product servlet");
-        //load page
-        request.getRequestDispatcher("/packages.jsp").forward(request, response);
     }
 
     /**

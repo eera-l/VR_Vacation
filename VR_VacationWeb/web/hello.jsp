@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 13-Jan-2019, 15:02:18
+    Document   : hello
+    Created on : 13-Jan-2019, 15:02:26
     Author     : felic
 --%>
 
@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="${pageContext.request.contextPath}/Hello">link</a>
+        <h1>here</h1>
+        <input value="${user.getUsername()}"/>
     </body>
 </html>
