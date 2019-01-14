@@ -44,6 +44,9 @@
         <div class="container-fluid">
             <h1>Sign up</h1>
             <form action="SignUp" method="POST">
+                <div class="alert alert-danger">
+                    <b> ${error}</b>
+                </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="text" class="form-control" name="email" value="${user.emailAddress}" placeholder="name@example.com">
