@@ -1,8 +1,9 @@
 package bean;
 
+import hibernate.DBHelper;
+import hibernate.Destination;
 import java.util.List;
 import javax.ejb.Stateless;
-import java.util.ArrayList;
 
 /**
  *
@@ -10,18 +11,19 @@ import java.util.ArrayList;
  */
 @Stateless
 public class DestinationBean {
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    DBHelper db = null;
 
     //get list of all detinations from hibernate db service
     //preferably Destination object with an id
-    public List<Package> getAllDestinations(String destinationName) {
-        return null;
+    public List<Destination> getAllDestinations() {
+        db = new DBHelper();
+        return db.findAllDestinations();
     }
 
     //get destinations by ID from hibernate db service
     //preferably Destinations table object
-    public Package getDestinationByID() {
-        return null;
+    public Destination findDestinationByID(int id) {
+        db = new DBHelper();
+        return db.findDestinationById(id);
     }
 }

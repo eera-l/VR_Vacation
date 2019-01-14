@@ -45,8 +45,14 @@
     </nav>
     <body>
         <div class="container-fluid">
-            <h1>More information on package</h1>
-            <img src="${pageContext.request.contextPath}/${img}" alt="image">
+            <div class="card" >
+                <img src="${pageContext.request.contextPath}/${package.imagePath}" class="card-img-top" alt="image"></a>
+                <div class="card-body">
+                    <h5 class="card-title">${package.name}</h5>
+                    <p class="card-text">${package.description}</p>
+                    <p class="card-text"><small class="text-muted">${package.price}</small> SEK</p>
+                </div>
+            </div>
             <a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
  onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=500");' title='Chatbot'>Chatbot</a> 
         </div>

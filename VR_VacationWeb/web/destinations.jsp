@@ -46,14 +46,14 @@
     <div class="container-fluid">
         <h1>Destinations</h1>
         <div class="card-deck">
-            <c:forEach var="img" items="${imageList}">
-                <a href="${pageContext.request.contextPath}/ID_Destination?img=${img}"<div class="card">
-                        <iframe src="${img}" frameborder="0" width=308 height=1263 class="img-fluid card-img-top" allowfullscreen data-token="k6f7rb"></iframe>
+            <c:forEach var="destination" items="${destinations}">
+                    <div class="card" style="width: 18rem;">
+                        <iframe src="${destination.imagePath}" frameborder="0" width=308 height=1263 class="img-fluid card-img-top" allowfullscreen data-token="k6f7rb"></iframe>
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">${message}</p>
-                            <p class="card-text"><small class="text-muted">${message}</small></p>
-                        </div></a>               
+                            <h5 class="card-title">${destination.name}</h5>
+                            <a href="${pageContext.request.contextPath}/ID_Destination?destinationId=${destination.destinationId}" class="btn btn-primary">See more...</a>
+                        </div>
+                    </div>              
             </c:forEach> 
         </div>
                    <a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
