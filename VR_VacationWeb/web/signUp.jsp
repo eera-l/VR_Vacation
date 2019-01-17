@@ -87,6 +87,10 @@
                     <label for="country">Country:</label>
                     <input type="text" class="form-control" name="country" value="${user.addressCountry}">
                 </div>
+                <div class="form-group">
+                    <label for="ccNumber">Credit card number:</label>
+                    <input type="text" class="form-control" name="ccNumber" value="${user.creditCardNumber}">
+                </div>
                 <div class="alert alert-danger">
                     <b> ${error}</b>
                 </div>

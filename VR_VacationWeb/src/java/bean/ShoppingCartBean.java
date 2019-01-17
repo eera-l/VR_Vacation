@@ -103,7 +103,7 @@ public class ShoppingCartBean {
             MessageProducer messageProducer = session.createProducer(queue);
             TextMessage JMSmessage = session.createTextMessage();
             JMSmessage.setText(message);
-            System.out.println( "***** Shopping Bean: Sent the message to YourQueue:"+ JMSmessage.getText());
+            System.out.println( "***** Shopping Bean: Sent the message to vrQueue:"+ JMSmessage.getText());
             messageProducer.send(JMSmessage);
         } catch(Exception ex){
             ex.printStackTrace();

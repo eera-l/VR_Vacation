@@ -4,6 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/hibernate/DBHelper.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/global/DataStorage.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/servlet/SignUp.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/bean/LogInBean.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/bean/ShoppingCartBean.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/bean/SignUpBean.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/src/java/hibernate/User.java</file>
+            <file>file:/C:/Users/EerAmore/Documents/HKR/Network%20Applications/Project/VR_Vacation/VR_VacationWeb/web/signUp.jsp</file>
         </group>
     </open-files>
 </project-private>
