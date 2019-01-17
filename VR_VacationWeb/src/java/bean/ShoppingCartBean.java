@@ -1,5 +1,6 @@
 package bean;
 
+import global.DataStorage;
 import hibernate.DBHelper;
 import java.util.ArrayList;
 import javax.ejb.Stateful;
@@ -28,13 +29,14 @@ public class ShoppingCartBean {
     // "Insert Code > Add Business Method")
     
     ArrayList<Package> packages = new ArrayList<>();
+    Order order;
     User user;
-   
-    public ShoppingCartBean() {}
     
-    public ShoppingCartBean(User user) {
-        this.user = user;
+    public ShoppingCartBean() {
+       user = DataStorage.getInstance().getUser();
     }
+    
+  
 
     public void addItems(Package... packages) {
         for (Package p : packages) {
@@ -69,7 +71,7 @@ public class ShoppingCartBean {
         BankAppBean baBean = new BankAppBean();
         
         if (baBean.contactBank(user.getCreditCardNumber())) {
-            Order order = new Order(user, getTotal(), new Date(), true);
+            order = new Order(user, getTotal(), new Date(), true);
             order.setPackages((Set<Package>) packages);
             DBHelper dbHelper = new DBHelper();
             for (int i = 0; i < packages.size(); i++) {
@@ -88,7 +90,18 @@ public class ShoppingCartBean {
     public void sendEmailConfirmationToUser() {
         EmailBean eBean = new EmailBean();
         
+        String body = "Thank you for your order on VR Vacation!\r\n";
+        body += "You have ordered the following items:\r\n";
+        for (int i = 0; i < packages.size(); i++) {
+           body += (i + 1) + " - " + packages.get(i).getName() + "\r\n";
+        }
         
+        body += "The total of your order is " + order.getPrice() + " SEK.";
+        body += "Thank you for your purchase and we hope you enjoy your virtual vacation!";
+        
+        String subject = "Confirmation for order nr. " + order.getOrderId();       
+        
+        eBean.sendEmail(user.getEmailAddress(), subject, body);
     }
 
     public void sendJMSMessageToVrQueue(String message) {
