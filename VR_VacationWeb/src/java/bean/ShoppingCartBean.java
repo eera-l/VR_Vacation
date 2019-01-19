@@ -10,6 +10,8 @@ import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
@@ -31,9 +33,19 @@ public class ShoppingCartBean {
     ArrayList<Package> packages = new ArrayList<>();
     Order order;
     User user;
+    Timer timer;
     
     public ShoppingCartBean() {
        user = DataStorage.getInstance().getUser();
+       timer = new Timer();
+       timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Your database code here
+                System.out.println("Timer expired!");
+            }
+        }, 5*1000);
+       timer.cancel();
     }
     
   
