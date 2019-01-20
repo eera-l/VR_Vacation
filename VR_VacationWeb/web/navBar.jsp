@@ -40,9 +40,6 @@
                     <li id="logIn">
                         <a  class="navbar-brand" href="/VR_VacationWeb/LogIn"><span class="fa fa-sign-in"></span> Login</a>
                     </li>
-                    <li id="user">
-                        <a class="navbar-brand" href="/VR_VacationWeb/SignUp"><span class="fa fa-user"></span></a>
-                    </li>
                 </ul>  
             </div>
         </nav>
