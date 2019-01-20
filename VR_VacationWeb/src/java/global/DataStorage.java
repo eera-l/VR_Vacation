@@ -16,6 +16,7 @@ public class DataStorage {
     private static DataStorage instance;
     private User user;
     
+    
     private DataStorage() {}
     
     public static DataStorage getInstance() {

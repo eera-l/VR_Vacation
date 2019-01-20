@@ -3,6 +3,7 @@ package servlet;
 import bean.ShoppingCartBean;
 import java.io.IOException;
 import hibernate.Package;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,13 @@ public class ShoppingCart extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ShoppingCartBean scb = lookupShoppingCartBeanBean();
+        ArrayList<Package> packages = shoppingCartBean.getPackages();
+        
+        request.setAttribute("packages", packages);
+        packages.forEach((p) -> {
+            System.out.println(p.getName());
+        });
+        System.out.println("Hello from shopping cart!");
     }
 
    

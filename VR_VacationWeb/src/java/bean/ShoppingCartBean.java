@@ -9,6 +9,7 @@ import hibernate.Order;
 import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +48,11 @@ public class ShoppingCartBean {
         }, 5*1000);
        timer.cancel();
     }
+
+    public ArrayList<Package> getPackages() {
+        return packages;
+    }   
+    
     
   
 
@@ -82,9 +88,11 @@ public class ShoppingCartBean {
         
         BankAppBean baBean = new BankAppBean();
         
-        if (baBean.contactBank(user.getCreditCardNumber())) {
+        user = DataStorage.getInstance().getUser();
+        
+        if (user != null && baBean.contactBank(user.getCreditCardNumber())) {
             order = new Order(user, getTotal(), new Date(), true);
-            order.setPackages((Set<Package>) packages);
+            order.setPackages(new HashSet<Package>(packages));
             DBHelper dbHelper = new DBHelper();
             for (int i = 0; i < packages.size(); i++) {
                 dbHelper.assignOrderToPackage(packages.get(i), order);
