@@ -5,6 +5,7 @@ import hibernate.Package;
 import java.util.List;
 import javax.ejb.Stateless;
 
+
 /**
  *
  * @author Felicity
@@ -25,5 +26,10 @@ public class PackageBean {
     public Package getPackageWithID(int packageID) {
         db = new DBHelper();
         return db.findPackageById(packageID);
+    }
+    
+    public List<Package> findPackagesByDestinationId(Integer destId){
+        db = new DBHelper();
+        return db.findPackagesByDestination(destId);
     }
 }

@@ -22,34 +22,35 @@ public class Packages extends HttpServlet {
     @EJB
     private PackageBean packageBean;
     List<Package> packages = null;
-    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
     }
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         //get all packages listed in db
-        packages =  packageBean.getAllPackages();
+        String destinationPackages = request.getParameter("destinationId");
+        if (destinationPackages != null) {
+            packages = packageBean.findPackagesByDestinationId(Integer.parseInt(destinationPackages));
+        } else {
+            packages = packageBean.getAllPackages();
+        }
         //forward to jsp page
         request.setAttribute("packages", packages);
         //load page
         request.getRequestDispatcher("/packages.jsp").forward(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
     @Override
     public String getServletInfo() {

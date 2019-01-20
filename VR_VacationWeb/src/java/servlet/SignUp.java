@@ -82,7 +82,7 @@ public class SignUp extends HttpServlet {
                 || street.isEmpty() || zipCode.isEmpty() || city.isEmpty()
                 || country.isEmpty()) {
             request.setAttribute("user", user);
-            request.setAttribute("error", "all fields must be completed");
+            request.setAttribute("error", "All fields must be completed");
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
         } else {
 
@@ -95,7 +95,7 @@ public class SignUp extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 request.setAttribute("user", user);
-                request.setAttribute("error", "an error occured");
+                request.setAttribute("error", "An error occured");
                 request.getRequestDispatcher("signUp.jsp").forward(request, response);
             }
         }
