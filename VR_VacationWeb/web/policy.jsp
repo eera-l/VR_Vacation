@@ -34,7 +34,7 @@
                 Remove any obstacles in your surroundings. For adventurous VR Vacation a free space of at least 20 square meters is recommended. Do not leave children under
                 12 years old use VR Vacation unsupervised. Supervising is also recommended for users above 65 years old.</p><br><br><br>
         </div>
-        <a href='#' onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
+        <a href='#' style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;" onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=550");' title='Chatbot'>Chatbot</a>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>

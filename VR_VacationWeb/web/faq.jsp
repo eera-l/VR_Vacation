@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
     <body>
-      
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">VR Vacations</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarHamburger">
@@ -59,22 +59,22 @@
             <p>You can install your VR Vacation on up to 5 consoles.</p><br>
             <h3>Can I be refunded for my purchase?</h3><br>
             <p>Yes, you can receive a total refund if the request is done within 14 days from the purchase and if the vacation has been 
-            played for less than 3 hours.</p><br>
+                played for less than 3 hours.</p><br>
             <h3>Can I go on a virtual vacation offline?</h3><br>
             <p>No, to be able to use VR Vacation a connection to the Internet is necessary.</p><br>
             <h3>Can I use VR Vacation if I suffer from epilepsy?</h3><br>
             <p>Yes, VR vacation offers a variety of packages that are safe for users with epilepsy.</p><br>
             <h3>Can I add an experience after buying a vacation?</h3><br>
             <p>No, this is not possible at the moment. Please make sure to add all the experiences you plan on doing when you
-            make an order.</p><br>
+                make an order.</p><br>
             <h3>Can I see my past orders?</h3><br>
             <p>Yes, you can see a history of your orders by visiting your account page.</p><br>
             <h3>How can I contact you?</h3><br>
             <p>If you have any questions you're welcome to contact us by sending an email to <a href="vr_vacation@hotmail.com">vr_vacation@hotmail.com</a>.</p><br><br>
         </div>
-               
-<a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
- onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=500");' title='Chatbot'>Chatbot</a>      
+
+        <a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
+           onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=500");' title='Chatbot'>Chatbot</a>      
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
