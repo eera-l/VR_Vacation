@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">VR Vacations</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarHamburger">
@@ -39,12 +40,16 @@
                     <li id="logIn">
                         <a  class="navbar-brand" href="/VR_VacationWeb/LogIn"><span class="fa fa-sign-in"></span> Login</a>
                     </li>
+                    <li id="user">
+                        <a class="navbar-brand" href="/VR_VacationWeb/SignUp"><span class="fa fa-user"></span></a>
+                    </li>
                 </ul>  
             </div>
         </nav>
         <script>
             $(function () {
                 var pageURL = window.location.pathname;
+                
                 switch (pageURL) {
                     case '/VR_VacationWeb/ShoppingCart':
                         $('#cart').hide();

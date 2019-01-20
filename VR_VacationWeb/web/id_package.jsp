@@ -42,11 +42,16 @@
                    });
                    $(function () {
                        $('#addToCart').click(function (event) {
-                           var addPackToCart = ${package.packageId}
-                           $.get('ID_Package', {addPackToCart: addPackToCart}, function (responseText) {
-                               $('#addedToCart').text(responseText);
-                               $('#addedToCart').addClass('alert alert-info');
-                           });
+                           var loggedIn = ${pageContext.request.getAttribute('userLogged')};
+                           if (loggedIn) {
+                            var addPackToCart = ${package.packageId}
+                            $.get('ID_Package', {addPackToCart: addPackToCart}, function (responseText) {
+                                $('#addedToCart').text(responseText);
+                                $('#addedToCart').addClass('alert alert-info');
+                            });
+                        } else {
+                           window.location.href='/VR_VacationWeb/logIn.jsp';
+                        }
                        });
                    });
                    $(function () {
