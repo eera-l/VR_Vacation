@@ -60,6 +60,8 @@ public class SignUp extends HttpServlet {
         String city = request.getParameter("city");
         String country = request.getParameter("country");
         String ccNumber = request.getParameter("ccNumber");
+        
+        System.out.println(ccNumber);
 
         //create new user
         User user = new User(email, userName, password, firstName, lastName,

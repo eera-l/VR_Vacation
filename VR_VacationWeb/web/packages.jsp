@@ -21,7 +21,7 @@
             <div class="card-deck">
                 <c:forEach var="package" items="${packages}">
                     <div class="card" style="width: 18rem;">
-                        <img src="${pageContext.request.contextPath}/${package.imagePath}" class="card-img-top" alt="image" >
+                        <img src="${package.imagePath}" class="card-img-top" alt="image" >
                         <div class="card-body">
                             <h5 class="card-title">${package.name}</h5>
                             <a href="${pageContext.request.contextPath}/ID_Package?packageId=${package.packageId}" class="btn btn-primary">See more...</a>

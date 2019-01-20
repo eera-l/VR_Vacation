@@ -1,5 +1,6 @@
 package bean;
 
+import global.DataStorage;
 import hibernate.DBHelper;
 import java.util.ArrayList;
 import javax.ejb.Stateful;
@@ -8,8 +9,9 @@ import hibernate.Order;
 import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
@@ -28,19 +30,26 @@ public class ShoppingCartBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    List<Package> packages = new ArrayList<>();
+    ArrayList<Package> packages = new ArrayList<>();
+    Order order;
     User user;
-   
-    public ShoppingCartBean() {}
+    Timer timer;
     
-    public ShoppingCartBean(User user) {
-        this.user = user;
+    public ShoppingCartBean() {
+       user = DataStorage.getInstance().getUser();
+       timer = new Timer();
+       timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Your database code here
+                System.out.println("Timer expired!");
+            }
+        }, 5*1000);
+       timer.cancel();
     }
+    
+  
 
-    public List<Package> getPackages() {
-        return packages;
-    }
-    
     public void addItems(Package... packages) {
         for (Package p : packages) {
             this.packages.add(p);
@@ -74,7 +83,7 @@ public class ShoppingCartBean {
         BankAppBean baBean = new BankAppBean();
         
         if (baBean.contactBank(user.getCreditCardNumber())) {
-            Order order = new Order(user, getTotal(), new Date(), true);
+            order = new Order(user, getTotal(), new Date(), true);
             order.setPackages((Set<Package>) packages);
             DBHelper dbHelper = new DBHelper();
             for (int i = 0; i < packages.size(); i++) {
@@ -93,7 +102,18 @@ public class ShoppingCartBean {
     public void sendEmailConfirmationToUser() {
         EmailBean eBean = new EmailBean();
         
+        String body = "Thank you for your order on VR Vacation!\r\n";
+        body += "You have ordered the following items:\r\n";
+        for (int i = 0; i < packages.size(); i++) {
+           body += (i + 1) + " - " + packages.get(i).getName() + "\r\n";
+        }
         
+        body += "The total of your order is " + order.getPrice() + " SEK.";
+        body += "Thank you for your purchase and we hope you enjoy your virtual vacation!";
+        
+        String subject = "Confirmation for order nr. " + order.getOrderId();       
+        
+        eBean.sendEmail(user.getEmailAddress(), subject, body);
     }
 
     public void sendJMSMessageToVrQueue(String message) {
@@ -108,7 +128,7 @@ public class ShoppingCartBean {
             MessageProducer messageProducer = session.createProducer(queue);
             TextMessage JMSmessage = session.createTextMessage();
             JMSmessage.setText(message);
-            System.out.println( "***** Shopping Bean: Sent the message to YourQueue:"+ JMSmessage.getText());
+            System.out.println( "***** Shopping Bean: Sent the message to vrQueue:"+ JMSmessage.getText());
             messageProducer.send(JMSmessage);
         } catch(Exception ex){
             ex.printStackTrace();
