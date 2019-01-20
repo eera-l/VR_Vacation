@@ -18,7 +18,7 @@
         <div class="container">
             <div class="container-fluid">
                 <div class="card" >
-                    <img src="${pageContext.request.contextPath}/${package.imagePath}" class="card-img-top" alt="image"></a>
+                    <img src="${package.imagePath}" class="card-img-top" alt="image"></a>
                     <div class="card-body">
                         <h5 class="card-title">${package.name}</h5>
                         <p class="card-text">${package.description}</p>
