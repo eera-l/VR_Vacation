@@ -2,6 +2,7 @@ package servlet;
 
 import bean.PackageBean;
 import bean.ShoppingCartBean;
+import bean.UserBean;
 import java.io.IOException;
 import javax.ejb.EJB;
 import hibernate.Package;
@@ -27,10 +28,18 @@ public class ID_Package extends HttpServlet {
 
     @EJB
     private PackageBean packageBean;
+    
+    @EJB
+    private UserBean userBean;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        if (userBean.checkIfUserLoggedIn()) {
+            request.setAttribute("userLogged", true);
+        } else {
+            request.setAttribute("userLogged", false);
+        }
     }
 
     @Override
