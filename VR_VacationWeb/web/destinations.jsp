@@ -27,8 +27,7 @@
                 </div>              
             </c:forEach> 
         </div>
-        <a href='#'style="position: fixed; left: 90%; bottom: 0; width: 10%; background-color: #2f3338; color: white; text-align:center;"
-           onclick='javascript:window.open("chatbot_jsp.jsp", "_blank", "scrollbars=1,resizable=1,height=400,width=500");' title='Chatbot'>Chatbot</a> 
+        <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
@@ -37,6 +36,9 @@
     <script>
                $(function () {
                    $("#nav").load("${pageContext.request.contextPath}/navBar.jsp");
+               });
+               $(function () {
+                   $('#chatbot').load("${pageContext.request.contextPath}/chatbot_jsp.jsp");
                });
     </script>
 </body>

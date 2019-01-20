@@ -8,12 +8,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    <servlet>
-        <servlet-name>ChatbotServlet</servlet-name>
-        <servlet-class>servlet.ChatbotServlet</servlet-class>
-    </servlet>
- <servlet-mapping>
-        <servlet-name>ChatbotServlet</servlet-name>
-        <url-pattern>/ChatbotServlet</url-pattern>
-    </servlet-mapping>
 </web-app>
