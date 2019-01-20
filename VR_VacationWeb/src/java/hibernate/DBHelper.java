@@ -24,8 +24,7 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
     }
     
-    //<editor-fold defaultstate="collapsed" desc="comment">
-    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="findUserByEmail">
     public User findUserByEmail(String email) {
         User user = null;
         
@@ -44,9 +43,10 @@ public class DBHelper {
         
         return user;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findOrdersByUserEmail">
+    
     public List<Order> findOrdersByUserEmail(String email) {
         List<Order> orders = null;
 
@@ -64,9 +64,10 @@ public class DBHelper {
         }
         return orders;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="checkIfUserExists">
+    
     public boolean checkIfUserExists(String email) {
         
         User user = null;
@@ -90,9 +91,10 @@ public class DBHelper {
             return true;
         }
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="checkLogIn">
+
     public boolean checkLogIn(String email, String password) {
         
         User user = null;
@@ -116,9 +118,10 @@ public class DBHelper {
             return true;
         }
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findAllPackages">
+
      public List<Package> findAllPackages() {
 
         List<Package> packages = null;
@@ -136,9 +139,10 @@ public class DBHelper {
         }
         return packages;
     }
+       //</editor-fold> 
      
-    //<editor-fold defaultstate="collapsed" desc="comment">
-    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="findPackageById">
+
      public Package findPackageById(int packageId) {
          Package pack = null;
          
@@ -156,9 +160,10 @@ public class DBHelper {
         }
          return pack;
      }
-     
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+     
+    //<editor-fold defaultstate="collapsed" desc="findPackagesByOrder">
+    
     public List<Destination> findPackagesByOrder(int orderId) {
         
         List<Destination> dests = null;
@@ -175,9 +180,10 @@ public class DBHelper {
         }
         return dests;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findPackagesByDestination">
+    
     public List<Package> findPackagesByDestination(int destId) {
          List<Package> packages = null;
          session = HibernateUtil.getSessionFactory().openSession();
@@ -193,9 +199,10 @@ public class DBHelper {
         }
         return packages;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findAllDestinations">
+    
     public List<Destination> findAllDestinations() {
 
         List<Destination> dests = null;
@@ -212,9 +219,10 @@ public class DBHelper {
         }
         return dests;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findDestinationById">
+    
      public Destination findDestinationById(int destId) {
          Destination dest = null;
          session = HibernateUtil.getSessionFactory().openSession();
@@ -232,9 +240,10 @@ public class DBHelper {
         }
          return dest;
      }
+     //</editor-fold>
      
-    //<editor-fold defaultstate="collapsed" desc="comment">
-    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="findExperienceById">
+    
      public Experience findExperienceById(int expId) {
          Experience exp = null;
          session = HibernateUtil.getSessionFactory().openSession();
@@ -252,9 +261,10 @@ public class DBHelper {
         }
          return exp;
      }
+     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="comment">
-    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="findExpByDestination">
+    
     public List<Experience> findExpByDestination(int destId) {
         
         List<Experience> exps = null;
@@ -270,11 +280,11 @@ public class DBHelper {
             session.close();
         }
         return exps;
-        
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findExpByPackage">
+    
     public List<Experience> findExpByPackage(int packageId) {
         
         List<Experience> exps = null;
@@ -290,11 +300,11 @@ public class DBHelper {
             session.close();
         }
         return exps;
-        
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="findOrderById">
+
      public Order findOrderById(int orderId) {
          Order order = null;
          session = HibernateUtil.getSessionFactory().openSession();
@@ -312,9 +322,10 @@ public class DBHelper {
         }
          return order;
      }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+     
+    //<editor-fold defaultstate="collapsed" desc="createUser">
+    
     public boolean createUser(User user) {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -331,9 +342,10 @@ public class DBHelper {
             session.close();
         }
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="createUser">
+    
     public boolean createUser(String emailAddress, String username, String password, String firstName, String lastName, String phoneNumber, String addressStreet, String addressZipCode, String addressCity, String addressCountry, String creditCardNumber) {
         
         session = HibernateUtil.getSessionFactory().openSession();
@@ -352,9 +364,10 @@ public class DBHelper {
             session.close();
         }
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="createOrder">
+    
     public boolean createOrder(Order order) {
         
         session = HibernateUtil.getSessionFactory().openSession();
@@ -372,9 +385,10 @@ public class DBHelper {
             session.close();
         }
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="createOrder">
+    
     public boolean createOrder(User user, BigDecimal price, Date date, boolean isPaid) {
         
         session = HibernateUtil.getSessionFactory().openSession();
@@ -393,9 +407,10 @@ public class DBHelper {
             session.close();
         }
     }
-      
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+      
+    //<editor-fold defaultstate="collapsed" desc="assignOrderToPackage">
+    
     public boolean assignOrderToPackage(Package pack, Order order) {
         boolean ok = false;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -414,9 +429,10 @@ public class DBHelper {
         
         return ok;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="assignOrderToPackage">
+    
     public boolean assignOrderToPackage(int packId, int orderId) {
         boolean ok = false;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -439,9 +455,10 @@ public class DBHelper {
         
         return ok;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="assignPackageToExperience">
+    
     public boolean assignPackageToExperience(Package pack, Experience exp) {
         boolean ok = false;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -460,9 +477,10 @@ public class DBHelper {
         
         return ok;
     }
-    
-    //<editor-fold defaultstate="collapsed" desc="comment">
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="assignPackageToExperience">
+    
     public boolean assignPackageToExperience(int packId, int expId) {
         boolean ok = false;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -485,5 +503,6 @@ public class DBHelper {
         
         return ok;
     }
+    //</editor-fold>
      
 }

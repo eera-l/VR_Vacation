@@ -8,6 +8,7 @@ import hibernate.Order;
 import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
@@ -27,7 +28,7 @@ public class ShoppingCartBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    ArrayList<Package> packages = new ArrayList<>();
+    List<Package> packages = new ArrayList<>();
     User user;
    
     public ShoppingCartBean() {}
@@ -36,6 +37,10 @@ public class ShoppingCartBean {
         this.user = user;
     }
 
+    public List<Package> getPackages() {
+        return packages;
+    }
+    
     public void addItems(Package... packages) {
         for (Package p : packages) {
             this.packages.add(p);
