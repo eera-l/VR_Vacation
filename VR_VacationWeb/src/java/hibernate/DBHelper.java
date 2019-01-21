@@ -24,7 +24,27 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
     }
     
-    //<editor-fold defaultstate="collapsed" desc="findUserByEmail">
+    //<editor-fold defaultstate="collapsed" desc="findUserByUserName">
+    public User findUserByUserName(String username) {
+        User user = null;
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("from User as user where user.username = '" + username +
+                    "'");
+            user = (User)q.uniqueResult();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        
+        return user;
+    }
+    //</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="findUserByEmail">
     public User findUserByEmail(String email) {
         User user = null;
         
@@ -95,15 +115,15 @@ public class DBHelper {
     
     //<editor-fold defaultstate="collapsed" desc="checkLogIn">
 
-    public boolean checkLogIn(String email, String password) {
+    public boolean checkLogIn(String username, String password) {
         
         User user = null;
         
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Query q = session.createQuery("from User as user where user.emailAddress = '" + email +
-                    "' and password = '" + password + "'");
+            Query q = session.createQuery("from User as user where user.username = '" + username +
+                    "' and user.password = '" + password + "'");
             user = (User)q.uniqueResult();
             
         } catch (Exception ex) {

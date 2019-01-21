@@ -40,22 +40,22 @@ public class LogIn extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         //get form data
-        String userName = request.getParameter("username");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         //call bean to verify password
         //if bad credentials - error message
         if (password.isEmpty()) {
-            if (!userName.isEmpty()) {
-                request.setAttribute("username", userName);
+            if (!username.isEmpty()) {
+                request.setAttribute("username", username);
             }
-            request.setAttribute("error", "*username or password incorrect");
+            request.setAttribute("error", "*username and password must be entered");
             request.getRequestDispatcher("logIn.jsp").forward(request, response);
         } else {
-            if (logInBean.authenticateUser(userName, password)) {
+            if (logInBean.authenticateUser(username, password)) {
                 //redirect to home page
                 //TO:DO add username feild to menu - diasble logIn signUp buttons
-                request.setAttribute("userName", userName);
+                request.setAttribute("userName", username);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "*username or password incorrect");

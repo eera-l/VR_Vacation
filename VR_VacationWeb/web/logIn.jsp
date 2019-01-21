@@ -29,7 +29,7 @@
                 <div>
                     <span class="error">${error}</span>
                 </div>
-                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+                <button type="submit" class="btn btn-outline-secondary">Log In</button>
             </form>
 
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>

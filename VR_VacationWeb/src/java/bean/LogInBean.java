@@ -14,11 +14,11 @@ public class LogInBean {
     DBHelper db = null;
     boolean loggedIn = false;
 
-    public boolean authenticateUser(String email, String password) {
+    public boolean authenticateUser(String username, String password) {
         db = new DBHelper();
-        if(db.checkLogIn(email, password)){
+        if(db.checkLogIn(username, password)){
             loggedIn = true;
-            setUser(email);
+            setUser(username);
         }
         return loggedIn;
     }
@@ -27,7 +27,7 @@ public class LogInBean {
         return loggedIn;
     }
     
-    private void setUser(String email) {
-        DataStorage.getInstance().setUser(db.findUserByEmail(email));
+    private void setUser(String username) {
+        DataStorage.getInstance().setUser(db.findUserByUserName(username));
     }
 }
