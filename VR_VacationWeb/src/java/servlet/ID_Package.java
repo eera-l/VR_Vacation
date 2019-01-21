@@ -1,11 +1,14 @@
 package servlet;
 
+import bean.ExperienceBean;
 import bean.PackageBean;
 import bean.ShoppingCartBean;
 import bean.UserBean;
+import hibernate.Experience;
 import java.io.IOException;
 import javax.ejb.EJB;
 import hibernate.Package;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.Context;
@@ -24,6 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ID_Package", urlPatterns = {"/ID_Package"})
 public class ID_Package extends HttpServlet {
 
+    @EJB
+    private ExperienceBean experienceBean;
+
     ShoppingCartBean shoppingCartBean = lookupShoppingCartBeanBean();
 
     @EJB
@@ -31,6 +37,7 @@ public class ID_Package extends HttpServlet {
 
     @EJB
     private UserBean userBean;
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,16 +52,26 @@ public class ID_Package extends HttpServlet {
         if (request.getParameter("packageId") != null && !request.getParameter("packageId").equalsIgnoreCase("")) {
             String id = request.getParameter("packageId");
             Package aPackage = packageBean.getPackageWithID(Integer.parseInt(id));
+            List<Experience> experiences = experienceBean.getExperiences(aPackage);
             request.setAttribute("package", aPackage);
+            request.setAttribute("experiences", experiences);
             request.getRequestDispatcher("/id_package.jsp").forward(request, response);
         } else if (request.getParameter("addPackToCart") != null && !request.getParameter("addPackToCart").equalsIgnoreCase("")) {
             //get package to add to cart
             String addToCartId = request.getParameter("addPackToCart");
             Package aPackage = packageBean.getPackageWithID(Integer.parseInt(addToCartId));
             //call shopping cart bean
-            shoppingCartBean.addItems(aPackage);
+            shoppingCartBean.addPackages(aPackage);
             //return to current page
             response.getWriter().write("Package added to cart");
+        }else if (request.getParameter("addExpToCart") != null && !request.getParameter("addExpToCart").equalsIgnoreCase("")) {
+            //get package to add to cart
+            String addExpToCartId = request.getParameter("addExpToCart");
+            Experience experience = experienceBean.getExperienceById(Integer.parseInt(addExpToCartId));
+            //call shopping cart bean
+            shoppingCartBean.addExperience(experience);
+            //return to current page
+            response.getWriter().write("Experience added to cart");
         }
     }
 

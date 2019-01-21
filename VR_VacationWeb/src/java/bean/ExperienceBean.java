@@ -20,20 +20,23 @@ public class ExperienceBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
     private DBHelper db;
-    
+
     public ExperienceBean() {
         db = new DBHelper();
     }
-    
-    private List<Experience> getExperiences(Package pack) {
+
+    public List<Experience> getExperiences(Package pack) {
         List<Experience> exps;
-        
-        int pack_id = pack.getPackageId();        
+
+        int pack_id = pack.getPackageId();
         exps = db.findExpByPackage(pack_id);
-        
+
         return exps;
-    }    
-    
+    }
+
+    public Experience getExperienceById(Integer id) {
+        return db.findExperienceById(id);
+    }
+
 }
