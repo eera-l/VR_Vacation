@@ -3,6 +3,7 @@
     Created on : 05/01/2019, 9:14:54 PM
     Author     : Felicity
 --%>
+<%@page import="java.util.ArrayList, hibernate.Package"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,22 +15,29 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
     <body>
+        <%
+        ArrayList<Package> packages =(ArrayList<Package>) request.getAttribute("packages"); 
+          
+        %>
         <div id="nav"></div>
         <div class="container">
             <div>
-                <h1> Shopping Cart</h1>
-                <p>Select items</p>
+                <h1> Shopping Cart</h1><br><br>
+                <h3>Here are the items in your shopping cart:</h3>
             </div>
-            <c:forEach var="package" items="${packages}">
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">${package.name}</label>
-                    </div>
-                </div>
-            </c:forEach> 
+            <form action="ShoppingCart" method="POST">            
+            <ul class="list-group">
+            <% 
+                for (hibernate.Package pack : packages) {           %>                
+                    
+                <li class="list-group-item" ><input type="hidden" name="package_to_remove" value="<%=pack.getPackageId()%>"/><%=pack.getName()%><input type="submit" id="btn_remove" value="Remove" style="position: absolute; top: 10%; left: 92%; color: grey;" class="btn btn-outline-secondary"/></li>
+                
+                <%}%>
+            </ul>
+            </form>
+            <br><br>
             <div>
-                <a href="${pageContext.request.contextPath}/ShoppingCart" class="btn btn-primary">Checkout</a>
+                <a id="btn_checkout" class="btn btn-primary" style="color: white;">Checkout</a>
             </div>
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
         </div>
@@ -44,6 +52,13 @@
             $(function () {
                 $('#chatbot').load("${pageContext.request.contextPath}/chatbot_jsp.jsp");
             });
+                   $(function () {
+                       $('#btn_checkout').click(function (event) {
+                       window.location.href = '/VR_VacationWeb/loading.jsp';
+                   });
+                   
+               });
+            
         </script>
     </body>
 </html>

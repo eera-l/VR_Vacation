@@ -15,6 +15,8 @@ public class DataStorage {
     
     private static DataStorage instance;
     private User user;
+    private ShoppingCart shoppingCart;
+    
     
     private DataStorage() {}
     
@@ -34,5 +36,15 @@ public class DataStorage {
     public void setUser(User user) {
         this.user = user;
     }
+    
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+    
+    
     
 }

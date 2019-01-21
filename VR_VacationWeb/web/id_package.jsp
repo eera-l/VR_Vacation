@@ -63,6 +63,7 @@
                     $('#addedToCart').addClass('alert alert-info');
                 });
             });
+
         });
         $(function () {
             $('.addExperienceToCart').click(function (event) {
@@ -73,12 +74,12 @@
                     var element = document.getElementById(labelId);
                     $(element).text(responseText);
                     $(element).addClass('alert alert-info');
-                });
+
             });
         });
         $(function () {
             $('#goToCart').click(function (event) {
-                window.location.href = '/VR_VacationWeb/shoppingCart.jsp';
+                window.location.href = '/VR_VacationWeb/ShoppingCart';
             });
         });
     </script>

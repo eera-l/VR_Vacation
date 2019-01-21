@@ -1,11 +1,13 @@
 package servlet;
 
 import bean.ShoppingCartBean;
+import bean.UserBean;
 import java.io.IOException;
 import hibernate.Package;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,12 +24,25 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ShoppingCart", urlPatterns = {"/ShoppingCart"})
 public class ShoppingCart extends HttpServlet {
 
-    ShoppingCartBean shoppingCartBean = lookupShoppingCartBeanBean();
+    ShoppingCartBean shoppingCartBean = new ShoppingCartBean();
+    
+    @EJB
+    UserBean userBean;
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ShoppingCartBean scb = lookupShoppingCartBeanBean();
+        
+        if (userBean.checkIfUserLoggedIn()) {
+            shoppingCartBean = new ShoppingCartBean();
+            ArrayList<Package> packages = shoppingCartBean.getShoppingCart().getPackages();
+
+            request.setAttribute("packages", packages);
+            request.getRequestDispatcher("/shoppingCart.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/logIn.jsp").forward(request, response);
+        }
     }
 
    
@@ -36,14 +51,20 @@ public class ShoppingCart extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        request.getRequestDispatcher("/shoppingCart.jsp").forward(request, response);
+        
     }
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        if (request.getParameter("package_to_remove") != null) {
+            int id = Integer.parseInt(request.getParameter("package_to_remove"));
+            shoppingCartBean.removeItem(id);
+        }
         processRequest(request, response);
+        
     }
 
    

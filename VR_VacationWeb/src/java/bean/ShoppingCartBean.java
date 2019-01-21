@@ -1,6 +1,7 @@
 package bean;
 
 import global.DataStorage;
+import global.ShoppingCart;
 import hibernate.DBHelper;
 import hibernate.Experience;
 import java.util.ArrayList;
@@ -11,9 +12,11 @@ import hibernate.User;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.annotation.PostConstruct;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
@@ -31,39 +34,63 @@ public class ShoppingCartBean {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    ArrayList<Package> packages = new ArrayList<>();
+
+    
     ArrayList<Experience> experiences = new ArrayList<>();
+    
+
+    
+
     Order order;
     User user;
     Timer timer;
-
+    ShoppingCart shoppingCart;
+    
+    @PostConstruct
+    private void init() {
+       user = DataStorage.getInstance().getUser();
+       //shoppingCart = new ShoppingCart();
+       shoppingCart = DataStorage.getInstance().getShoppingCart();
+    }
+    
     public ShoppingCartBean() {
-        user = DataStorage.getInstance().getUser();
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+       user = DataStorage.getInstance().getUser();
+       shoppingCart = DataStorage.getInstance().getShoppingCart();
+       
+       /*timer = new Timer();
+       timer.schedule(new TimerTask() {
+
             @Override
             public void run() {
                 // Your database code here
                 System.out.println("Timer expired!");
             }
+
         }, 5 * 1000);
-        timer.cancel();
+        timer.cancel();*/
     }
 
-    public void addPackages(Package... packages) {
-        for (Package p : packages) {
-            this.packages.add(p);
-        }
+    
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
+  
 
-    public boolean removePackage(Package pack) {
+    public void addItems(Package... packages) {
+        shoppingCart.addItems(packages);
 
-        if (packages.size() > 0 && packages.contains(pack)) {
-            packages.remove(pack);
-            return true;
-        } else {
-            return false;
-        }
+    }
+    
+    
+
+
+    public boolean removeItem(int packId) {
+        
+        Package pack = shoppingCart.returnRightPackage(packId);
+        
+       return shoppingCart.removeItem(pack);
+
     }
 
     public void addExperience(Experience... experiences) {
@@ -81,31 +108,30 @@ public class ShoppingCartBean {
     }
 
     public BigDecimal getTotal() {
-        BigDecimal total = BigDecimal.ZERO;
-
-        if (packages.size() > 0) {
-            for (Package p : packages) {
-                total.add(p.getPrice());
-            }
-        }
-
-        return total;
+       
+        return shoppingCart.getTotal();
     }
 
     public String checkOut() {
 
         BankAppBean baBean = new BankAppBean();
+        
+        user = DataStorage.getInstance().getUser();
+        
+        if (user != null && baBean.contactBank(user.getCreditCardNumber())) {
 
-        if (baBean.contactBank(user.getCreditCardNumber())) {
             order = new Order(user, getTotal(), new Date(), true);
-            order.setPackages((Set<Package>) packages);
+            order.setPackages(new HashSet<Package>(shoppingCart.getPackages()));
             DBHelper dbHelper = new DBHelper();
-            for (int i = 0; i < packages.size(); i++) {
-                dbHelper.assignOrderToPackage(packages.get(i), order);
-            }
             dbHelper.createOrder(order);
 
-            String message = "Order nr. " + order.getOrderId() + "completed successfully by " + user.getFirstName() + " " + user.getLastName();
+            for (int i = 0; i < shoppingCart.getPackages().size(); i++) {
+                dbHelper.assignOrderToPackage(shoppingCart.getPackages().get(i), order);
+            }
+            
+            
+            String message = "Order nr. " + order.getOrderId() + " completed successfully by " + user.getFirstName() + " " + user.getLastName();
+
             sendJMSMessageToVrQueue(message);
             return message;
         } else {
@@ -118,8 +144,9 @@ public class ShoppingCartBean {
 
         String body = "Thank you for your order on VR Vacation!\r\n";
         body += "You have ordered the following items:\r\n";
-        for (int i = 0; i < packages.size(); i++) {
-            body += (i + 1) + " - " + packages.get(i).getName() + "\r\n";
+        for (int i = 0; i < shoppingCart.getPackages().size(); i++) {
+           body += (i + 1) + " - " + shoppingCart.getPackages().get(i).getName() + "\r\n";
+
         }
 
         body += "The total of your order is " + order.getPrice() + " SEK.";
@@ -149,5 +176,6 @@ public class ShoppingCartBean {
         }
 
     }
+
 
 }
