@@ -46,7 +46,7 @@
                     $(function () {
                         $('#submit').click(function (event) {
                             var query = $('#textInput').val();
-                            $.get('ChatbotServlet', {query: query}, function (responseText) {
+                            $.get('Chatbot', {query: query}, function (responseText) {
                                 $('#answer').text(responseText);
                             });
                         });

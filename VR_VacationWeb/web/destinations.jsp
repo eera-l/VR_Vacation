@@ -19,7 +19,7 @@
         <div class="card-deck">
             <c:forEach var="destination" items="${destinations}">
                 <div class="card" style="width: 18rem;">
-                    <iframe src="${destination.imagePath}" frameborder="0" width=308 height=1263 class="img-fluid card-img-top" allowfullscreen data-token="k6f7rb"></iframe>
+                     <img src="${destination.imagePath}" class="card-img-top" alt="image" >
                     <div class="card-body">
                         <h5 class="card-title">${destination.name}</h5>
                         <a href="${pageContext.request.contextPath}/Packages?destinationId=${destination.destinationId}" class="btn btn-primary">View Packages...</a>

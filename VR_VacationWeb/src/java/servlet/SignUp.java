@@ -3,9 +3,15 @@ package servlet;
 import bean.EmailBean;
 import bean.ShoppingCartBean;
 import bean.SignUpBean;
+import global.DataStorage;
 import hibernate.User;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +25,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SignUp", urlPatterns = {"/SignUp"})
 public class SignUp extends HttpServlet {
 
+    ShoppingCartBean shoppingCartBean = lookupShoppingCartBeanBean();
+
     @EJB
     private EmailBean emailBean;
 
@@ -31,8 +39,7 @@ public class SignUp extends HttpServlet {
 
         String email = request.getParameter("email");
 
-        ShoppingCartBean scb = new ShoppingCartBean();
-        scb.sendJMSMessageToVrQueue(email);
+        shoppingCartBean.sendJMSMessageToVrQueue(email);
     }
 
     @Override
@@ -59,13 +66,11 @@ public class SignUp extends HttpServlet {
         String zipCode = request.getParameter("zipCode");
         String city = request.getParameter("city");
         String country = request.getParameter("country");
-        String ccNumber = request.getParameter("ccNumber");
-        
-        System.out.println(ccNumber);
+        String creditCardNumber = request.getParameter("creditCardNumber");
 
         //create new user
         User user = new User(email, userName, password, firstName, lastName,
-                phoneNumber, street, zipCode, city, country, ccNumber
+                phoneNumber, street, zipCode, city, country, creditCardNumber
         );
 
         //if user doesnt already exists
@@ -77,10 +82,17 @@ public class SignUp extends HttpServlet {
 
         //IF error in form 
         //error message all feilds are required
-        if (email.isEmpty() || userName.isEmpty() || password.isEmpty()
-                || firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty()
-                || street.isEmpty() || zipCode.isEmpty() || city.isEmpty()
-                || country.isEmpty()) {
+        if (request.getParameter("email")!= null && email.isEmpty() || 
+                request.getParameter("userName")!= null && userName.isEmpty() || 
+                request.getParameter("password")!= null && password.isEmpty() || 
+                request.getParameter("firstName")!= null && firstName.isEmpty() || 
+                request.getParameter("lastName")!= null && lastName.isEmpty() || 
+                request.getParameter("phoneNumber")!= null && phoneNumber.isEmpty()||
+                request.getParameter("street")!= null && street.isEmpty() || 
+                request.getParameter("zipCode")!= null && zipCode.isEmpty() ||
+                request.getParameter("city")!= null && city.isEmpty()|| 
+                request.getParameter("country")!= null && country.isEmpty() || 
+                request.getParameter("creditCardNumber")!= null && creditCardNumber.isEmpty()) {
             request.setAttribute("user", user);
             request.setAttribute("error", "All fields must be completed");
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
@@ -104,6 +116,16 @@ public class SignUp extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
+    }
+
+    private ShoppingCartBean lookupShoppingCartBeanBean() {
+        try {
+            Context c = new InitialContext();
+            return (ShoppingCartBean) c.lookup("java:global/VR_VacationWeb/ShoppingCartBean!bean.ShoppingCartBean");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
 
 }

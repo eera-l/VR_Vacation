@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Federica
  */
-@WebServlet(name = "ChatbotServlet", urlPatterns = {"/ChatbotServlet"})
-public class ChatbotServlet extends HttpServlet {
+@WebServlet(name = "Chatbot", urlPatterns = {"/Chatbot"})
+public class Chatbot extends HttpServlet {
 
     ChatBotBean chatBotBean = lookupChatBotBeanBean();
 

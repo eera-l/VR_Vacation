@@ -20,7 +20,7 @@
             <h1>Packages</h1>
             <div class="card-deck">
                 <c:forEach var="package" items="${packages}">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card mb-4">
                         <img src="${package.imagePath}" class="card-img-top" alt="image" >
                         <div class="card-body">
                             <h5 class="card-title">${package.name}</h5>
