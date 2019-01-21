@@ -59,6 +59,10 @@
                     <label for="country">Country:</label>
                     <input type="text" class="form-control" name="country" value="${user.addressCountry}">
                 </div>
+                <div class="form-group">
+                    <label for="CreditCardNumber">Credit card number:</label>
+                    <input type="text" class="form-control" name="creditCardNumber" value="${user.creditCardNumber}">
+                </div>
                 <div id="error1"></div>
                 <button id="submit" type="submit" class="btn btn-outline-secondary">Submit</button>
             </form>
