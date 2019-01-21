@@ -61,7 +61,7 @@ public class ShoppingCart extends HttpServlet {
         
         if (request.getParameter("package_to_remove") != null) {
             int id = Integer.parseInt(request.getParameter("package_to_remove"));
-            shoppingCartBean.removeItem(id);
+            shoppingCartBean.removePackage(id);
         }
         processRequest(request, response);
         

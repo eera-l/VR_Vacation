@@ -35,12 +35,6 @@ public class ShoppingCartBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
-    
-    ArrayList<Experience> experiences = new ArrayList<>();
-    
-
-    
-
     Order order;
     User user;
     Timer timer;
@@ -77,34 +71,28 @@ public class ShoppingCartBean {
     }
   
 
-    public void addItems(Package... packages) {
-        shoppingCart.addItems(packages);
+    public void addPackage(Package... packages) {
+        shoppingCart.addPackage(packages);
 
-    }
-    
-    
+    }       
 
 
-    public boolean removeItem(int packId) {
+    public boolean removePackage(int packId) {
         
         Package pack = shoppingCart.returnRightPackage(packId);
         
-       return shoppingCart.removeItem(pack);
+       return shoppingCart.removePackage(pack);
 
     }
 
     public void addExperience(Experience... experiences) {
-        this.experiences.addAll(Arrays.asList(experiences));
+        shoppingCart.addExperience(experiences);
     }
 
-    public boolean removeExperience(Experience exp) {
-
-        if (experiences.size() > 0 && experiences.contains(exp)) {
-            experiences.remove(exp);
-            return true;
-        } else {
-            return false;
-        }
+    public boolean removeExperience(int expId) {
+        Experience exp = shoppingCart.returnRightExperience(expId);
+        
+        return shoppingCart.removeExperience(exp);
     }
 
     public BigDecimal getTotal() {

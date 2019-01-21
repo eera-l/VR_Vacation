@@ -61,7 +61,7 @@ public class ID_Package extends HttpServlet {
             String addToCartId = request.getParameter("addPackToCart");
             Package aPackage = packageBean.getPackageWithID(Integer.parseInt(addToCartId));
             //call shopping cart bean
-            shoppingCartBean.addPackages(aPackage);
+            shoppingCartBean.addPackage(aPackage);
             //return to current page
             response.getWriter().write("Package added to cart");
         }else if (request.getParameter("addExpToCart") != null && !request.getParameter("addExpToCart").equalsIgnoreCase("")) {

@@ -5,9 +5,11 @@
  */
 package global;
 
+import hibernate.Experience;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import hibernate.Package;
+import java.util.Arrays;
 
 /**
  *
@@ -16,16 +18,22 @@ import hibernate.Package;
 public class ShoppingCart {
     
     ArrayList<Package> packages = new ArrayList<>();
+    ArrayList<Experience> experiences = new ArrayList<>();
+    
     
     
      public ArrayList<Package> getPackages() {
         return packages;
      }   
      
-    public void addItems(Package... packages) {
+    public void addPackage(Package... packages) {
         for (Package p : packages) {
             this.packages.add(p);
         }
+    }
+    
+     public void addExperience(Experience... experiences) {
+        this.experiences.addAll(Arrays.asList(experiences));
     }
     
     public Package returnRightPackage(int packId) {
@@ -42,10 +50,34 @@ public class ShoppingCart {
         return pack;
     }
     
-      public boolean removeItem(Package pack) {
+    public Experience returnRightExperience(int expId) {
+        
+        Experience exp = null;
+        
+        for (int i = 0; i < experiences.size(); i++) {
+            if (experiences.get(i).getExperienceId() == expId) {
+                exp = experiences.get(i);
+                break;
+            }
+        }
+        
+        return exp;
+    }
+    
+      public boolean removePackage(Package pack) {
         
         if (packages.size() > 0 && packages.contains(pack)) {
             packages.remove(pack);
+            return true;
+        } else {
+            return false;
+        }
+    }
+      
+      public boolean removeExperience(Experience exp) {
+
+        if (experiences.size() > 0 && experiences.contains(exp)) {
+            experiences.remove(exp);
             return true;
         } else {
             return false;
@@ -58,6 +90,12 @@ public class ShoppingCart {
         if (packages.size() > 0) {
             for (Package p : packages) {
                 total = total.add(p.getPrice());
+            }
+        }
+        
+        if (experiences.size() > 0) {
+            for (Experience exp : experiences) {
+                total = total.add(exp.getPrice());
             }
         }
         

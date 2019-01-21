@@ -30,7 +30,7 @@ public class LogInBean {
     
 
     private void setUser(String username) {
-        ataStorage.getInstance().setUser(db.findUserByUserName(username));
+        DataStorage.getInstance().setUser(db.findUserByUserName(username));
         DataStorage.getInstance().setShoppingCart(new ShoppingCart());
     }
 }

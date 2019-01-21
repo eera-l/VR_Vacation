@@ -77,6 +77,7 @@
 
             });
         });
+    });
         $(function () {
             $('#goToCart').click(function (event) {
                 window.location.href = '/VR_VacationWeb/ShoppingCart';
