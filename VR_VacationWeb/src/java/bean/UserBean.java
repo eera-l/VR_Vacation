@@ -6,6 +6,11 @@
 package bean;
 
 import global.DataStorage;
+import hibernate.DBHelper;
+import hibernate.Order;
+import hibernate.Package;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 
 /**
@@ -35,6 +40,25 @@ public class UserBean {
        return "";
    }
    
+   public List<Order> returnUserOrders() {
+       List<Order> orders;
+       
+       DBHelper dbHelper = new DBHelper();
+       
+       orders = dbHelper.findOrdersByUserEmail(DataStorage.getInstance().getUser().getEmailAddress());
+       
+       return orders;
+   }  
+   
+   public List<Package> returnOrderPackages(Order order) {
+       List<Package> packages;
+       
+       DBHelper dbHelper = new DBHelper();
+       
+       packages = dbHelper.findPackagesByOrder(order.getOrderId());
+       
+       return packages;
+   }
    
     
     

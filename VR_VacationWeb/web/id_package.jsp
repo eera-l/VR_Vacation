@@ -50,7 +50,7 @@
             });
             $(function () {
                 $('#goToCart').click(function () {
-                    window.location.href = '/VR_VacationWeb/shoppingCart.jsp';
+                    window.location.href = '/VR_VacationWeb/ShoppingCart';
                 });
             });
             $(function () {

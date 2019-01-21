@@ -6,8 +6,13 @@
 package servlet;
 
 import bean.ShoppingCartBean;
+import bean.UserBean;
+import hibernate.Order;
+import hibernate.Package;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -29,6 +34,9 @@ public class UserPageServlet extends HttpServlet {
 
     @EJB
     private ShoppingCartBean scb = lookupShoppingCartBeanBean();
+    
+    @EJB
+    private UserBean userBean;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,6 +49,14 @@ public class UserPageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        List<Package> packages = new ArrayList<>();
+        List<Order> orders = userBean.returnUserOrders();
+        for (Order o : orders) {
+            packages.addAll(userBean.returnOrderPackages(o));
+        }
+        
+        request.setAttribute("orders", orders);
+        request.setAttribute("packages", packages);
         
         request.setAttribute("result", scb.checkOut());
         request.getRequestDispatcher("/userpage.jsp").forward(request, response);

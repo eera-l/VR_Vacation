@@ -1,6 +1,7 @@
 package bean;
 
 import global.DataStorage;
+import global.ShoppingCart;
 import hibernate.DBHelper;
 import javax.ejb.Stateful;
 
@@ -29,5 +30,6 @@ public class LogInBean {
     
     private void setUser(String email) {
         DataStorage.getInstance().setUser(db.findUserByEmail(email));
+        DataStorage.getInstance().setShoppingCart(new ShoppingCart());
     }
 }

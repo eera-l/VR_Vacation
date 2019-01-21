@@ -3,7 +3,7 @@
     Created on : 05/01/2019, 9:14:54 PM
     Author     : Felicity
 --%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList, hibernate.Package"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,21 +22,22 @@
         <div id="nav"></div>
         <div class="container">
             <div>
-                <h1> Shopping Cart</h1>
-                <p>Select items</p>
+                <h1> Shopping Cart</h1><br><br>
+                <h3>Here are the items in your shopping cart:</h3>
             </div>
+            <form action="ShoppingCart" method="POST">            
+            <ul class="list-group">
             <% 
-                for (Package pack : packages) {
-            %>
-                <div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1"></label>
-                    </div>
-                </div>
+                for (hibernate.Package pack : packages) {           %>                
+                    
+                <li class="list-group-item" ><input type="hidden" name="package_to_remove" value="<%=pack.getPackageId()%>"/><%=pack.getName()%><input type="submit" id="btn_remove" value="Remove" style="position: absolute; top: 10%; left: 92%; color: grey;" class="btn btn-outline-secondary"/></li>
+                
                 <%}%>
+            </ul>
+            </form>
+            <br><br>
             <div>
-                <a id="btn_checkout" class="btn btn-primary">Checkout</a>
+                <a id="btn_checkout" class="btn btn-primary" style="color: white;">Checkout</a>
             </div>
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
         </div>
@@ -55,7 +56,9 @@
                        $('#btn_checkout').click(function (event) {
                        window.location.href = '/VR_VacationWeb/loading.jsp';
                    });
+                   
                });
+            
         </script>
     </body>
 </html>

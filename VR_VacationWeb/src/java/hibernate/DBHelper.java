@@ -164,21 +164,21 @@ public class DBHelper {
      
     //<editor-fold defaultstate="collapsed" desc="findPackagesByOrder">
     
-    public List<Destination> findPackagesByOrder(int orderId) {
+    public List<Package> findPackagesByOrder(int orderId) {
         
-        List<Destination> dests = null;
+        List<Package> packs = null;
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
             Query q = session.createQuery("from Package as package where package.order.orderId = " + orderId);
 
-            dests = (List<Destination>)q.list();
+            packs = (List<Package>)q.list();
         } catch (Exception ex) {
             ex.printStackTrace();
         }finally {
             session.close();
         }
-        return dests;
+        return packs;
     }
     //</editor-fold>
     
