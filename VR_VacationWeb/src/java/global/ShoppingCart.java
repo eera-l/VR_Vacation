@@ -25,6 +25,11 @@ public class ShoppingCart {
      public ArrayList<Package> getPackages() {
         return packages;
      }   
+
+    public ArrayList<Experience> getExperiences() {
+        return experiences;
+    }    
+     
      
     public void addPackage(Package... packages) {
         for (Package p : packages) {

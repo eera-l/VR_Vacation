@@ -117,6 +117,8 @@ public class ShoppingCartBean {
                 dbHelper.assignOrderToPackage(shoppingCart.getPackages().get(i), order);
             }
             
+            shoppingCart.getPackages().clear();
+            shoppingCart.getExperiences().clear();
             
             String message = "Order nr. " + order.getOrderId() + " completed successfully by " + user.getFirstName() + " " + user.getLastName();
 

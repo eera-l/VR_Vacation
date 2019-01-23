@@ -190,7 +190,7 @@ public class DBHelper {
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Query q = session.createQuery("from Package as package where package.order.orderId = " + orderId);
+            Query q = session.createQuery("from Package as pack where pack.order.orderId = " + orderId);
 
             packs = (List<Package>)q.list();
         } catch (Exception ex) {

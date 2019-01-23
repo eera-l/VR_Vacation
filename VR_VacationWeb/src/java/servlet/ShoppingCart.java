@@ -2,6 +2,7 @@ package servlet;
 
 import bean.ShoppingCartBean;
 import bean.UserBean;
+import hibernate.Experience;
 import java.io.IOException;
 import hibernate.Package;
 import java.util.ArrayList;
@@ -37,8 +38,9 @@ public class ShoppingCart extends HttpServlet {
         if (userBean.checkIfUserLoggedIn()) {
             shoppingCartBean = new ShoppingCartBean();
             ArrayList<Package> packages = shoppingCartBean.getShoppingCart().getPackages();
-
+            ArrayList<Experience> experiences = shoppingCartBean.getShoppingCart().getExperiences();        
             request.setAttribute("packages", packages);
+            request.setAttribute("experiences", experiences);
             request.getRequestDispatcher("/shoppingCart.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/logIn.jsp").forward(request, response);
@@ -49,8 +51,7 @@ public class ShoppingCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        
+        processRequest(request, response);       
         
     }
 
@@ -62,6 +63,11 @@ public class ShoppingCart extends HttpServlet {
         if (request.getParameter("package_to_remove") != null) {
             int id = Integer.parseInt(request.getParameter("package_to_remove"));
             shoppingCartBean.removePackage(id);
+        }
+        
+        if (request.getParameter("experience_to_remove") != null) {
+            int id = Integer.parseInt(request.getParameter("experience_to_remove"));
+            shoppingCartBean.removeExperience(id);
         }
         processRequest(request, response);
         

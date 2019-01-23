@@ -27,6 +27,7 @@ public class Order  implements java.io.Serializable {
      private String billingAddressZipCode;
      private String billingAddressCity;
      private String billingAddressCountry;
+     @OneToMany(fetch = FetchType.EAGER)
      private Set<Package> packages = new HashSet<Package>(0);
 
     public Order() {
@@ -131,7 +132,7 @@ public class Order  implements java.io.Serializable {
         this.billingAddressCountry = billingAddressCountry;
     }
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     public Set<Package> getPackages() {
         return this.packages;
     }

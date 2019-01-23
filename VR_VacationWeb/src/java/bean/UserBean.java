@@ -40,6 +40,33 @@ public class UserBean {
        return "";
    }
    
+   public String getFirstName() {
+       
+       if (DataStorage.getInstance().getUser() != null) {
+           return DataStorage.getInstance().getUser().getFirstName();
+       }
+       
+       return "";
+   }
+   
+   public String getLastName() {
+       
+       if (DataStorage.getInstance().getUser() != null) {
+           return DataStorage.getInstance().getUser().getLastName();
+       }
+       
+       return "";
+   }
+   
+   public String getEmail() {
+       
+       if (DataStorage.getInstance().getUser() != null) {
+           return DataStorage.getInstance().getUser().getEmailAddress();
+       }
+       
+       return "";
+   }
+   
    public List<Order> returnUserOrders() {
        List<Order> orders;
        

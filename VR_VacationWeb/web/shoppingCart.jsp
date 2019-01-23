@@ -3,7 +3,7 @@
     Created on : 05/01/2019, 9:14:54 PM
     Author     : Felicity
 --%>
-<%@page import="java.util.ArrayList, hibernate.Package"%>
+<%@page import="java.util.ArrayList, hibernate.Package, hibernate.Experience"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,8 +16,8 @@
     </head>
     <body>
         <%
-        ArrayList<Package> packages =(ArrayList<Package>) request.getAttribute("packages"); 
-          
+          ArrayList<Package> packages =(ArrayList<Package>) request.getAttribute("packages"); 
+          ArrayList<Experience> exps =(ArrayList<Experience>) request.getAttribute("experiences"); 
         %>
         <div id="nav"></div>
         <div class="container">
@@ -25,16 +25,26 @@
                 <h1> Shopping Cart</h1><br><br>
                 <h3>Here are the items in your shopping cart:</h3>
             </div>
-            <form action="ShoppingCart" method="POST">            
             <ul class="list-group">
+            <form action="ShoppingCart" method="POST">            
+            
             <% 
                 for (hibernate.Package pack : packages) {           %>                
                     
                 <li class="list-group-item" ><input type="hidden" name="package_to_remove" value="<%=pack.getPackageId()%>"/><%=pack.getName()%><input type="submit" id="btn_remove" value="Remove" style="position: absolute; top: 10%; left: 92%; color: grey;" class="btn btn-outline-secondary"/></li>
                 
                 <%}%>
-            </ul>
             </form>
+            <form action="ShoppingCart" method="POST"> 
+                <% 
+                for (hibernate.Experience exp : exps) {           %>                
+                    
+                <li class="list-group-item" ><input type="hidden" name="experience_to_remove" value="<%=exp.getExperienceId()%>"/><%=exp.getName()%><input type="submit" id="btn_remove" value="Remove" style="position: absolute; top: 10%; left: 92%; color: grey;" class="btn btn-outline-secondary"/></li>
+                
+                <%}%>
+                 </form>
+            </ul>
+           
             <br><br>
             <div>
                 <a id="btn_checkout" class="btn btn-primary" style="color: white;">Checkout</a>

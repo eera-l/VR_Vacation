@@ -49,16 +49,27 @@ public class UserPageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("result", scb.checkOut());
+        request.setAttribute("user_first_name", userBean.getFirstName());
+        request.setAttribute("user_last_name", userBean.getLastName());
+        request.setAttribute("email_address", userBean.getEmail());
         List<Package> packages = new ArrayList<>();
         List<Order> orders = userBean.returnUserOrders();
+        List<Integer> numOfPacks = new ArrayList<>();
+        for (int i = 0; i < orders.size(); i++) {
+            List<Package> packs = userBean.returnOrderPackages(orders.get(i));
+            packages.addAll(packs);
+            numOfPacks.add(packs.size());
+        }
+        List<String> strOrders = new ArrayList<>();
         for (Order o : orders) {
-            packages.addAll(userBean.returnOrderPackages(o));
+            strOrders.add("Order #" + o.getOrderId() + ": executed in date " + o.getDate());
         }
         
-        request.setAttribute("orders", orders);
+        request.setAttribute("orders", strOrders);
         request.setAttribute("packages", packages);
+        request.setAttribute("num", numOfPacks);
         
-        request.setAttribute("result", scb.checkOut());
         request.getRequestDispatcher("/userpage.jsp").forward(request, response);
         
     }

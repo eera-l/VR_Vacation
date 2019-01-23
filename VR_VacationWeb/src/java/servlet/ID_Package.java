@@ -64,10 +64,10 @@ public class ID_Package extends HttpServlet {
             shoppingCartBean.addPackage(aPackage);
             //return to current page
             response.getWriter().write("Package added to cart");
-        }else if (request.getParameter("addExpToCart") != null && !request.getParameter("addExpToCart").equalsIgnoreCase("")) {
+        } else if (request.getParameter("addExpToCart") != null && !request.getParameter("addExpToCart").equalsIgnoreCase("")) {
             //get package to add to cart
             String addExpToCartId = request.getParameter("addExpToCart");
-            Experience experience = experienceBean.getExperienceById(Integer.parseInt(addExpToCartId));
+            Experience experience = experienceBean.getExperienceById(Integer.parseInt(addExpToCartId) / 10);
             //call shopping cart bean
             shoppingCartBean.addExperience(experience);
             //return to current page

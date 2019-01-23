@@ -15,23 +15,37 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
     <body>
+       
         <div id="nav"></div>
+         <div class="container">
+            <h2>Name: </h2>
+            <h3><%= request.getAttribute("user_first_name")%></h3><h3><%= " " + request.getAttribute("user_last_name")%></h3><br>
+            <h2>Email address: </h2>
+            <h3><%= request.getAttribute("email_address")%></h3>
+            <br><br>
+        </div>
         <%
         String result = (String)request.getAttribute("result"); 
-        List<Order> orders = (List<Order>)request.getAttribute("orders");
+        List<String> orders = (List<String>)request.getAttribute("orders");
         List<Package> packages = (List<Package>)request.getAttribute("packages");
+        List<Integer> nums = (List<Integer>)request.getAttribute("num");
+        int counter = 0;
+        int temp = 0;
         %>
-        <h1><%=result%></h1>
+        <h2><%=result%></h2>
+        <br>
         <ul class="list-group">
             <% 
-                for (Order order : orders) {           %>                
+                for (int i = 0; i < orders.size(); i++) {           %>                
                     
-                <li class="list-group-item" ><%=order.getOrderId()%></li>
+                <li class="list-group-item" ><%=orders.get(i)%></li>
                 <ul class="list-group">
                      <% 
-                            for (Package pack : packages) {           %> 
-                            <li class="list-group-item" ><%=pack.getName()%></li>
-                             <%}%>
+                            for (int j = counter; j < counter + nums.get(i); j++) {           %> 
+                            <li class="list-group-item" ><%=packages.get(j).getName()%></li>
+                            <%temp = j;
+                             }
+                             counter = temp + 1;%>
                 </ul>
                 <%}%>
             </ul>
