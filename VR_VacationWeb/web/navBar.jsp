@@ -44,7 +44,7 @@
                     <%
                         UserBean userBean = new UserBean();
                         String username = userBean.getUserName();
-                                if (userBean.checkIfUserLoggedIn()) {%>
+                        if (userBean.checkIfUserLoggedIn()) {%>
 
                     <script>
                         $(function () {
@@ -53,36 +53,15 @@
                             $('#signUp').hide();
                         });
                     </script>
-                    <%}%>
-                    <li id="user">
-                        <a  class="navbar-brand hidden" ><span class="fa fa-user"></span> <%=username%> </a>
+                    <li class="dropdown text-center">
+                        <a href="#" class="navbar-brand text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=username%><span class="fa fa-user"></span> </a>
+                        <ul  id="logout" class="dropdown-menu text-center">
+                            <li class="navbar-brand text-center" style="color:grey;"><a style="color:grey; text-align: center;" href="/VR_VacationWeb/LogIn?logout=logout">Logout</a></li>
+                        </ul>
                     </li>
+                    <%}%>
                 </ul>  
             </div>
         </nav>
-        <script>
-            $(function () {
-                var pageURL = window.location.pathname;
-                switch (pageURL) {
-                    case '/VR_VacationWeb/ShoppingCart':
-                        $('#cart').hide();
-                        break;
-                    case '/VR_VacationWeb/SignUp':
-                        $('#signUp').hide();
-                        break;
-                    case '/VR_VacationWeb/LogIn':
-                        $('#logIn').hide();
-                        break;
-                    case '/VR_VacationWeb/Packages':
-                        $('#package').addClass("active");
-                        break;
-                    case '/VR_VacationWeb/Destinations':
-                        $('#destination').addClass("active");
-                        break;
-                }
-            });
-
-        </script>
-
     </body>
 </html>
