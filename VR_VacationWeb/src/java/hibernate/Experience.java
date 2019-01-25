@@ -16,6 +16,7 @@ public class Experience  implements java.io.Serializable {
      private int experienceId;
      private Destination destination;
      private Package pack;
+     private Order order;
      private String name;
      private boolean isExtra;
      private String description;
@@ -34,10 +35,11 @@ public class Experience  implements java.io.Serializable {
         this.description = description;
         this.price = price;
     }
-    public Experience(int experienceId, Destination destination, Package pack, String name, boolean isExtra, String description, BigDecimal price, String imagePath) {
+    public Experience(int experienceId, Destination destination, Package pack, Order order, String name, boolean isExtra, String description, BigDecimal price, String imagePath) {
        this.experienceId = experienceId;
        this.destination = destination;
        this.pack = pack;
+       this.order = order;
        this.name = name;
        this.isExtra = isExtra;
        this.description = description;
@@ -66,6 +68,15 @@ public class Experience  implements java.io.Serializable {
     public void setPackage(Package pack) {
         this.pack = pack;
     }
+    
+    public Order getOrder() {
+        return this.order;
+    }
+    
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+    
     public String getName() {
         return this.name;
     }

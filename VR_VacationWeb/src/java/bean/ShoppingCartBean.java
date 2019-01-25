@@ -110,6 +110,7 @@ public class ShoppingCartBean {
 
             order = new Order(user, getTotal(), new Date(), true);
             order.setPackages(new HashSet<Package>(shoppingCart.getPackages()));
+            order.setExperiences(new HashSet<Experience>(shoppingCart.getExperiences()));
             DBHelper dbHelper = new DBHelper();
             dbHelper.createOrder(order);
 
@@ -117,12 +118,14 @@ public class ShoppingCartBean {
                 dbHelper.assignOrderToPackage(shoppingCart.getPackages().get(i), order);
             }
             
-            shoppingCart.getPackages().clear();
-            shoppingCart.getExperiences().clear();
+            for (int i = 0; i < shoppingCart.getExperiences().size(); i++) {
+                dbHelper.assignOrderToExperience(shoppingCart.getExperiences().get(i), order);
+            }
             
             String message = "Order nr. " + order.getOrderId() + " completed successfully by " + user.getFirstName() + " " + user.getLastName();
 
             sendJMSMessageToVrQueue(message);
+            sendEmailConfirmationToUser();
             return message;
         } else {
             return "Bank operation not approved. The order has been cancelled.";
@@ -143,6 +146,8 @@ public class ShoppingCartBean {
         body += "Thank you for your purchase and we hope you enjoy your virtual vacation!";
 
         String subject = "Confirmation for order nr. " + order.getOrderId();
+        shoppingCart.getPackages().clear();
+        shoppingCart.getExperiences().clear();
 
         eBean.sendEmail(user.getEmailAddress(), subject, body);
     }

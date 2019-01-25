@@ -4,6 +4,7 @@
     Author     : Federica
 --%>
 
+<%@page import="hibernate.Experience"%>
 <%@page import="java.util.List, hibernate.Order, hibernate.Package"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
         </div>
         <%
         String result = (String)request.getAttribute("result"); 
-        List<String> orders = (List<String>)request.getAttribute("orders");
+        List<Order> orders = (List<Order>)request.getAttribute("orders");
         List<Package> packages = (List<Package>)request.getAttribute("packages");
         List<Integer> nums = (List<Integer>)request.getAttribute("num");
         int counter = 0;
@@ -38,14 +39,19 @@
             <% 
                 for (int i = 0; i < orders.size(); i++) {           %>                
                     
-                <li class="list-group-item" ><%=orders.get(i)%></li>
+                <li class="list-group-item" ><%=orders.get(i).getOrderId()%></li>
                 <ul class="list-group">
                      <% 
-                            for (int j = counter; j < counter + nums.get(i); j++) {           %> 
-                            <li class="list-group-item" ><%=packages.get(j).getName()%></li>
-                            <%temp = j;
+                            //for (int j = counter; j < counter + nums.get(i); j++) {     
+                            for (Package pack : orders.get(i).getPackages()) {%> 
+                            <li class="list-group-item" ><%=pack.getName()%></li>
+                            <%
+                                //temp = j;
                              }
-                             counter = temp + 1;%>
+                             for (Experience exp : orders.get(i).getExperiences()) {%>
+                                <li class="list-group-item" ><%=exp.getName()%></li>
+                             <%}
+                             //counter = temp + 1;%>
                 </ul>
                 <%}%>
             </ul>

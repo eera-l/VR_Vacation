@@ -1,6 +1,7 @@
 package bean;
 
 import global.DataStorage;
+import global.ShoppingCart;
 import hibernate.DBHelper;
 import hibernate.User;
 import javax.ejb.Stateless;
@@ -26,6 +27,7 @@ public class SignUpBean {
     //add new user to db
     public boolean addNewUser(User user) {      
         DataStorage.getInstance().setUser(user);
+        DataStorage.getInstance().setShoppingCart(new ShoppingCart());
         return db.createUser(user);
     }
 }

@@ -524,5 +524,24 @@ public class DBHelper {
         return ok;
     }
     //</editor-fold>
+    
+    public boolean assignOrderToExperience(Experience exp, Order order) {
+        boolean ok = false;
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            exp.setOrder(order);
+            session.beginTransaction();
+            session.merge(exp);
+            session.getTransaction().commit();
+            ok = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        
+        return ok;
+    }
      
 }

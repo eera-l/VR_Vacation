@@ -29,6 +29,7 @@ public class Order  implements java.io.Serializable {
      private String billingAddressCountry;
      @OneToMany(fetch = FetchType.EAGER)
      private Set<Package> packages = new HashSet<Package>(0);
+     private Set<Experience> experiences = new HashSet<Experience>(0);
 
     public Order() {
     }
@@ -40,7 +41,7 @@ public class Order  implements java.io.Serializable {
         this.date = date;
         this.isPaid = isPaid;
     }
-    public Order(User user, BigDecimal price, Date date, boolean isPaid, String billingFirstName, String billingLastName, String billingAddressStreet, String billingAddressZipCode, String billingAddressCity, String billingAddressCountry, Set<Package> packages) {
+    public Order(User user, BigDecimal price, Date date, boolean isPaid, String billingFirstName, String billingLastName, String billingAddressStreet, String billingAddressZipCode, String billingAddressCity, String billingAddressCountry, Set<Package> packages, Set<Experience> experiences) {
        this.user = user;
        this.price = price;
        this.date = date;
@@ -52,6 +53,7 @@ public class Order  implements java.io.Serializable {
        this.billingAddressCity = billingAddressCity;
        this.billingAddressCountry = billingAddressCountry;
        this.packages = packages;
+       this.experiences = experiences;
     }
    
     public Integer getOrderId() {
@@ -139,6 +141,14 @@ public class Order  implements java.io.Serializable {
     
     public void setPackages(Set<Package> packages) {
         this.packages = packages;
+    }
+    
+    public Set<Experience> getExperiences() {
+        return this.experiences;
+    }
+    
+    public void setExperiences(Set<Experience> experiences) {
+        this.experiences = experiences;
     }
 
 

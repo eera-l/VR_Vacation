@@ -38,11 +38,17 @@
         <property name="billingAddressCountry" type="string">
             <column name="billing_address_country" length="45" />
         </property>
-        <set name="packages" table="package" inverse="true" lazy="true" fetch="select">
+        <set name="packages" table="package" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="order_order_id" />
             </key>
             <one-to-many class="hibernate.Package" />
+        </set>
+        <set name="experiences" table="experience" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="order_order_id" />
+            </key>
+            <one-to-many class="hibernate.Experience" />
         </set>
     </class>
 </hibernate-mapping>

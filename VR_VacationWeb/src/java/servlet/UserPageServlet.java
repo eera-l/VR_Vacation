@@ -66,7 +66,7 @@ public class UserPageServlet extends HttpServlet {
             strOrders.add("Order #" + o.getOrderId() + ": executed in date " + o.getDate());
         }
         
-        request.setAttribute("orders", strOrders);
+        request.setAttribute("orders", orders);
         request.setAttribute("packages", packages);
         request.setAttribute("num", numOfPacks);
         
