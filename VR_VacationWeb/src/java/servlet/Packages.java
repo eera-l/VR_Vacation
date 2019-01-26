@@ -3,7 +3,6 @@ package servlet;
 import bean.PackageBean;
 import hibernate.Package;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
