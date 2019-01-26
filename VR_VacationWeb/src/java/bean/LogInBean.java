@@ -31,6 +31,6 @@ public class LogInBean {
 
     private void setUser(String username) {
         DataStorage.getInstance().setUser(db.findUserByUserName(username));
-        DataStorage.getInstance().setShoppingCart(new ShoppingCart());
+        //DataStorage.getInstance().setShoppingCart(new ShoppingCart());
     }
 }

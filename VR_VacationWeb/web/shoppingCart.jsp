@@ -51,11 +51,14 @@
                 }%>
                  </form>
             </ul>
+                 <br>
                 <h3><%= total%></h3>
             <br><br>
             <div>
                 <h4 style="color: red;"><%= error %></h4>
-                <a id="btn_checkout" class="btn btn-primary" style="color: white;">Checkout</a>
+                <form action="ShoppingCart" method="POST">
+                <input type="submit" name="checkout" value="Checkout" id="btn_checkout" class="btn btn-primary" style="color: white;"></input>
+                </form>
             </div>
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
         </div>
@@ -70,13 +73,13 @@
             $(function () {
                 $('#chatbot').load("${pageContext.request.contextPath}/chatbot_jsp.jsp");
             });
-                   $(function () {
+                   /*$(function () {
                        $('#btn_checkout').click(function (event) {
                            if (packages !== null)
                                 window.location.href = '/VR_VacationWeb/loading.jsp';
                    });
                    
-               });
+               });*/
             
         </script>
     </body>

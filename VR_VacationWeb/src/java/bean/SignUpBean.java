@@ -27,7 +27,7 @@ public class SignUpBean {
     //add new user to db
     public boolean addNewUser(User user) {      
         DataStorage.getInstance().setUser(user);
-        DataStorage.getInstance().setShoppingCart(new ShoppingCart());
+        //DataStorage.getInstance().setShoppingCart(new ShoppingCart());
         return db.createUser(user);
     }
 }
