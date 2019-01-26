@@ -3,6 +3,8 @@
     Created on : 05/01/2019, 9:14:54 PM
     Author     : Felicity
 --%>
+<%@page import="java.util.TimerTask"%>
+<%@page import="java.util.Timer"%>
 <%@page import="java.util.ArrayList, hibernate.Package, hibernate.Experience"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,6 +23,7 @@
           String introText = (String)request.getAttribute("introText"); 
           String error = (String)request.getAttribute("error");
           String total = (String)request.getAttribute("total");
+          
         %>
         <div id="nav"></div>
         <div class="container">
@@ -73,13 +76,13 @@
             $(function () {
                 $('#chatbot').load("${pageContext.request.contextPath}/chatbot_jsp.jsp");
             });
-                   /*$(function () {
-                       $('#btn_checkout').click(function (event) {
-                           if (packages !== null)
-                                window.location.href = '/VR_VacationWeb/loading.jsp';
-                   });
-                   
-               });*/
+            /*$(function () {
+                $('#btn_checkout').click(function (event) {
+                    if (packages !== null)
+                         window.location.href = '/VR_VacationWeb/loading.jsp';
+            });
+
+        });*/
             
         </script>
     </body>

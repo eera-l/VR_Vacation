@@ -51,7 +51,7 @@ public class ShoppingCartBean {
        user = DataStorage.getInstance().getUser();
        shoppingCart = DataStorage.getInstance().getShoppingCart();
        
-       /*timer = new Timer();
+       timer = new Timer();
        timer.schedule(new TimerTask() {
 
             @Override
@@ -61,7 +61,7 @@ public class ShoppingCartBean {
             }
 
         }, 5 * 1000);
-        timer.cancel();*/
+        timer.cancel();
     }
 
     

@@ -2,6 +2,7 @@ package servlet;
 
 import bean.ShoppingCartBean;
 import bean.UserBean;
+import global.DataStorage;
 import hibernate.Experience;
 import java.io.IOException;
 import hibernate.Package;
@@ -35,10 +36,12 @@ public class ShoppingCart extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        if (shoppingCartBean.getShoppingCart() != null) {
+        
+        if (DataStorage.getInstance().getShoppingCart() != null) {
+            shoppingCartBean = new ShoppingCartBean();
             if (shoppingCartBean.getShoppingCart().getPackages().size() > 0 || shoppingCartBean.getShoppingCart().getExperiences().size() > 0) {
                 
-                shoppingCartBean = new ShoppingCartBean();
+                //shoppingCartBean = new ShoppingCartBean();
                 ArrayList<Package> packages = shoppingCartBean.getShoppingCart().getPackages();
                 ArrayList<Experience> experiences = shoppingCartBean.getShoppingCart().getExperiences();        
                 request.setAttribute("packages", packages);
