@@ -4,6 +4,8 @@ import bean.ExperienceBean;
 import bean.PackageBean;
 import bean.ShoppingCartBean;
 import bean.UserBean;
+import global.DataStorage;
+import global.ShoppingCart;
 import hibernate.Experience;
 import java.io.IOException;
 import javax.ejb.EJB;
@@ -30,6 +32,7 @@ public class ID_Package extends HttpServlet {
     @EJB
     private ExperienceBean experienceBean;
 
+    @EJB
     ShoppingCartBean shoppingCartBean = lookupShoppingCartBeanBean();
 
     @EJB
@@ -57,6 +60,10 @@ public class ID_Package extends HttpServlet {
             request.setAttribute("experiences", experiences);
             request.getRequestDispatcher("/id_package.jsp").forward(request, response);
         } else if (request.getParameter("addPackToCart") != null && !request.getParameter("addPackToCart").equalsIgnoreCase("")) {
+            if (DataStorage.getInstance().getShoppingCart() == null) {
+                DataStorage.getInstance().setShoppingCart(new ShoppingCart());
+            }
+            shoppingCartBean = new ShoppingCartBean();
             //get package to add to cart
             String addToCartId = request.getParameter("addPackToCart");
             Package aPackage = packageBean.getPackageWithID(Integer.parseInt(addToCartId));
@@ -66,6 +73,10 @@ public class ID_Package extends HttpServlet {
             response.getWriter().write("Package added to cart");
         } else if (request.getParameter("addExpToCart") != null && !request.getParameter("addExpToCart").equalsIgnoreCase("")) {
             //get package to add to cart
+            if (DataStorage.getInstance().getShoppingCart() == null) {
+                DataStorage.getInstance().setShoppingCart(new ShoppingCart());
+            }
+            shoppingCartBean = new ShoppingCartBean();
             String addExpToCartId = request.getParameter("addExpToCart");
             Experience experience = experienceBean.getExperienceById(Integer.parseInt(addExpToCartId) / 10);
             //call shopping cart bean

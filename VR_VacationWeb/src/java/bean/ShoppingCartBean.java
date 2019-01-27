@@ -51,7 +51,7 @@ public class ShoppingCartBean {
        user = DataStorage.getInstance().getUser();
        shoppingCart = DataStorage.getInstance().getShoppingCart();
        
-       /*timer = new Timer();
+       timer = new Timer();
        timer.schedule(new TimerTask() {
 
             @Override
@@ -61,7 +61,7 @@ public class ShoppingCartBean {
             }
 
         }, 5 * 1000);
-        timer.cancel();*/
+        timer.cancel();
     }
 
     
@@ -135,15 +135,22 @@ public class ShoppingCartBean {
     public void sendEmailConfirmationToUser() {
         EmailBean eBean = new EmailBean();
 
-        String body = "Thank you for your order on VR Vacation!\r\n";
-        body += "You have ordered the following items:\r\n";
-        for (int i = 0; i < shoppingCart.getPackages().size(); i++) {
+        String body = "Thank you for your order on VR Vacation!\r\n\r\n";
+        body += "You have ordered the following items:\r\n\r\n";
+        body += "Packages: \r\n";
+        int i = 0;
+        for ( ; i < shoppingCart.getPackages().size(); i++) {
            body += (i + 1) + " - " + shoppingCart.getPackages().get(i).getName() + "\r\n";
 
         }
+        body += "\r\nExperiences: \r\n";
+        for (int j = 0; j < shoppingCart.getExperiences().size(); j++) {
+            body += (i + 1) + " - " + shoppingCart.getExperiences().get(j).getName() + "\r\n";
+            i++;
+        }
 
-        body += "The total of your order is " + order.getPrice() + " SEK.";
-        body += "Thank you for your purchase and we hope you enjoy your virtual vacation!";
+        body += "\r\nThe total of your order is " + order.getPrice() + " SEK.";
+        body += "\r\nThank you for your purchase and we hope you enjoy your virtual vacation!";
 
         String subject = "Confirmation for order nr. " + order.getOrderId();
         shoppingCart.getPackages().clear();

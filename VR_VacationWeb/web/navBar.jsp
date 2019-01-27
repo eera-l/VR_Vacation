@@ -30,6 +30,12 @@
                     <li id="destination" class="nav-item">
                         <a class="nav-link" href="/VR_VacationWeb/Destinations">Destinations</a>
                     </li>
+                    <li id="policy" class="nav-item">
+                        <a class="nav-link" href="/VR_VacationWeb/PolicyServlet">Policy</a>
+                    </li>
+                    <li id="faq" class="nav-item">
+                        <a class="nav-link" href="/VR_VacationWeb/FAQServlet">FAQ</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li id="cart" class="disabled">
