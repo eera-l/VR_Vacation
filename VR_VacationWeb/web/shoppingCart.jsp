@@ -76,13 +76,6 @@
             $(function () {
                 $('#chatbot').load("${pageContext.request.contextPath}/chatbot_jsp.jsp");
             });
-            /*$(function () {
-                $('#btn_checkout').click(function (event) {
-                    if (packages !== null)
-                         window.location.href = '/VR_VacationWeb/loading.jsp';
-            });
-
-        });*/
             
         </script>
     </body>

@@ -7,6 +7,7 @@ package servlet;
 
 import bean.ShoppingCartBean;
 import bean.UserBean;
+import global.DataStorage;
 import hibernate.Order;
 import hibernate.Package;
 import java.io.IOException;
@@ -49,26 +50,17 @@ public class UserPageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setAttribute("result", scb.checkOut());
+        
+        if (DataStorage.getInstance().isCheckOut()) {
+            request.setAttribute("result", scb.checkOut());
+            DataStorage.getInstance().setCheckOut(false);
+        }
         request.setAttribute("user_first_name", userBean.getFirstName());
         request.setAttribute("user_last_name", userBean.getLastName());
         request.setAttribute("email_address", userBean.getEmail());
-        List<Package> packages = new ArrayList<>();
         List<Order> orders = userBean.returnUserOrders();
-        List<Integer> numOfPacks = new ArrayList<>();
-        for (int i = 0; i < orders.size(); i++) {
-            List<Package> packs = userBean.returnOrderPackages(orders.get(i));
-            packages.addAll(packs);
-            numOfPacks.add(packs.size());
-        }
-        List<String> strOrders = new ArrayList<>();
-        for (Order o : orders) {
-            strOrders.add("Order #" + o.getOrderId() + ": executed in date " + o.getDate());
-        }
         
         request.setAttribute("orders", orders);
-        request.setAttribute("packages", packages);
-        request.setAttribute("num", numOfPacks);
         
         request.getRequestDispatcher("/userpage.jsp").forward(request, response);
         

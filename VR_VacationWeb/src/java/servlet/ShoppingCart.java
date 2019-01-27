@@ -41,7 +41,6 @@ public class ShoppingCart extends HttpServlet {
             shoppingCartBean = new ShoppingCartBean();
             if (shoppingCartBean.getShoppingCart().getPackages().size() > 0 || shoppingCartBean.getShoppingCart().getExperiences().size() > 0) {
                 
-                //shoppingCartBean = new ShoppingCartBean();
                 ArrayList<Package> packages = shoppingCartBean.getShoppingCart().getPackages();
                 ArrayList<Experience> experiences = shoppingCartBean.getShoppingCart().getExperiences();        
                 request.setAttribute("packages", packages);
@@ -89,8 +88,10 @@ public class ShoppingCart extends HttpServlet {
         
         if (request.getParameter("checkout") != null) {
             if (!userBean.checkIfUserLoggedIn()) {
+                DataStorage.getInstance().setCheckOut(false);
                 request.getRequestDispatcher("/logIn.jsp").forward(request, response);
             } else {
+                DataStorage.getInstance().setCheckOut(true);
                 request.getRequestDispatcher("/loading.jsp").forward(request, response);
             }
         }

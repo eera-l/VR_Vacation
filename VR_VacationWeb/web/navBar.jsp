@@ -63,6 +63,7 @@
                         <a href="#" class="navbar-brand text-center" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=username%><span class="fa fa-user"></span> </a>
                         <ul  id="logout" class="dropdown-menu text-center">
                             <li class="navbar-brand text-center" style="color:grey;"><a style="color:grey; text-align: center;" href="/VR_VacationWeb/LogIn?logout=logout">Logout</a></li>
+                            <li class="navbar-brand text-center" style="color:grey;"><a style="color:grey; text-align: center;" href="/VR_VacationWeb/UserPageServlet">Account</a></li>
                         </ul>
                     </li>
                     <%}%>

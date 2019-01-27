@@ -18,9 +18,9 @@
         <div id="nav"></div>
         <div class="container-fluid">
             <h1>Packages</h1>
-            <div class="card-deck">
+            <div class="row">
                 <c:forEach var="package" items="${packages}">
-                    <div class="card mb-4">
+                    <div class="col-md-4">
                         <img src="${package.imagePath}" class="card-img-top" alt="image" >
                         <div class="card-body">
                             <h5 class="card-title">${package.name}</h5>
