@@ -63,6 +63,6 @@ public class EmailBean {
     }
     
     public void signUpWelcomeEmail(String email, String name, String userName){
-        sendEmail(email, "Welcome to VR Vacations", "We welcome you " + name + " to VR Vacations" + userName);
+        sendEmail(email, "Welcome to VR Vacations!\r\n", "We welcome you " + name + " to VR Vacations.\r\nYour username: " + userName);
     }
 }
