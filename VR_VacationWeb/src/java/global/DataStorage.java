@@ -16,6 +16,7 @@ public class DataStorage {
     private static DataStorage instance;
     private User user;
     private ShoppingCart shoppingCart;
+    private boolean checkOut;
     
     
     private DataStorage() {}
@@ -44,6 +45,16 @@ public class DataStorage {
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
+
+    public boolean isCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(boolean checkOut) {
+        this.checkOut = checkOut;
+    }
+    
+    
     
     
     

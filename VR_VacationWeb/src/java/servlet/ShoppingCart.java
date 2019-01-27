@@ -88,8 +88,10 @@ public class ShoppingCart extends HttpServlet {
         
         if (request.getParameter("checkout") != null) {
             if (!userBean.checkIfUserLoggedIn()) {
+                DataStorage.getInstance().setCheckOut(false);
                 request.getRequestDispatcher("/logIn.jsp").forward(request, response);
             } else {
+                DataStorage.getInstance().setCheckOut(true);
                 request.getRequestDispatcher("/loading.jsp").forward(request, response);
             }
         }

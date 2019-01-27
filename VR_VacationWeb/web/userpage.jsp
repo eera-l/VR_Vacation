@@ -20,12 +20,15 @@
         <div id="nav"></div>
         <div class="container">
             <%
-                String result = (String) request.getAttribute("result");
-                List<Order> orders = (List<Order>) request.getAttribute("orders");
-                List<Package> packages = (List<Package>) request.getAttribute("packages");
-                List<Integer> nums = (List<Integer>) request.getAttribute("num");
-                int counter = 0;
-                int temp = 0;
+                String result = "";
+                if (request.getAttribute("result") != null) {
+                    result = (String) request.getAttribute("result");
+                }
+                List<Order> orders = null;
+                if (request.getAttribute("orders") != null) {
+                orders = (List<Order>) request.getAttribute("orders"); 
+                }
+                
             %>
 
             <div class="text-center">
@@ -65,7 +68,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%for (int i = 0; i < orders.size(); i++) {%>    
+                        <%if (orders != null) {
+                            for (int i = 0; i < orders.size(); i++) {%>    
                         <tr>
 
                             <td>
@@ -73,14 +77,14 @@
                             </td>
 
 
-                            <%//for (int j = counter; j < counter + nums.get(i); j++) {     
+                            <%      
                                 for (Package pack : orders.get(i).getPackages()) {%> 
 
                             <td>
                                 <div><%=pack.getName()%></div>
                             </td>
                             <%
-                                    //temp = j;
+                                    
                                 }
                                 for (Experience exp : orders.get(i).getExperiences()) {%>
 
@@ -88,10 +92,10 @@
                                 <div><%=exp.getName()%></div>
                             </td>
                             <%}
-                                //counter = temp + 1;%>
+                                %>
 
                         </tr>
-                        <%}%>
+                        <%} }%>
                     </tbody>
                 </table>
 

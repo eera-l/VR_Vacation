@@ -43,7 +43,6 @@ public class ShoppingCartBean {
     @PostConstruct
     private void init() {
        user = DataStorage.getInstance().getUser();
-       //shoppingCart = new ShoppingCart();
        shoppingCart = DataStorage.getInstance().getShoppingCart();
     }
     
