@@ -16,7 +16,7 @@
     <div id="nav"></div>
     <body>
         <div class="container">
-            <div class="card" >
+            <div class="card-deck" >
                 <img src="${package.imagePath}" class="card-img-top" alt="image"></a>
                 <div class="card-body">
                     <h5 class="card-title">${package.name}</h5>
@@ -27,9 +27,9 @@
                     <button id="goToCart" class="btn btn-info">Go to cart</button>
                 </div>
                 <h1 class="container text-center">Optional Add on Experiences</h1>
-                <div class="container card-deck">
+                <div class="row">
                     <c:forEach var="experience" items="${experiences}" varStatus="loop">
-                        <div class="card">
+                        <div class="col-sm-4">
                             <img src="${experience.imagePath}" class="card-img-top" alt="image" >
                             <div class="card-body">
                                 <h4 class="card-title">${experience.name}</h4>

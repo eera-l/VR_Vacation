@@ -18,11 +18,12 @@
         <div class="container text-center">
             <h1>Live your dream vacation from the comfort of your own home</h1> 
 
-           
+           <iframe src="https://360player.io/p/wqosLr/" frameborder="0" width=560 height=315 class="img-fluid" allowfullscreen data-token="k6f7rb"></iframe>
 
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
-            
+    
             <div style="border: 2px outset;"><iframe style="margin: 3px;" src="https://360player.io/p/wmaPpv/" frameborder="0" width=1024 height=512></iframe></div>
+
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
