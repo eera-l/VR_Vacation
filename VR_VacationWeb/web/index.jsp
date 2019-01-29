@@ -2,6 +2,7 @@
     Document   : index
     Created on : 1-gen-2019, 17.27.54
     Author     : Federica
+    Function.  : Homepage for the client-side application
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,9 +17,7 @@
     <body>
         <div id="nav"></div>
         <div class="container text-center">
-            <h1>Live your dream vacation from the comfort of your own home</h1> 
-
-           <iframe src="https://360player.io/p/wqosLr/" frameborder="0" width=560 height=315 class="img-fluid" allowfullscreen data-token="k6f7rb"></iframe>
+            <h1>Live your dream vacation from the comfort of your own home</h1>
 
             <div id="chatbot" style="position: fixed; bottom: 10px; left: 90%"></div>
     
