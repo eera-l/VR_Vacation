@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * UserPageServlet.java
+ * Handles information for the user page. Returns
+ * user info if the user is logged in.
  */
 package servlet;
 
