@@ -2,6 +2,7 @@
     Document   : signUp.jsp
     Created on : 03/01/2019, 11:32:16 AM
     Author     : Felicity
+    Func       : sign up form display errors jquery
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
