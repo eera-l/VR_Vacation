@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * DataStorage.java
+ * Simple singleton for storing user's and shopping cart information
+ * throughout the website transactions.
  */
 package global;
 
