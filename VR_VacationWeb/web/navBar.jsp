@@ -2,6 +2,7 @@
     Document   : navBar
     Created on : 19-Jan-2019, 17:37:50
     Author     : felic
+    Func       : navigation bar displayed inside each view
 --%>
 
 <%@page import="bean.UserBean"%>
