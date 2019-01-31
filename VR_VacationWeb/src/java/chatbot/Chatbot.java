@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Chatbot.java
+ * Handles chatbot logic.
  */
 package chatbot;
 
@@ -22,13 +21,16 @@ public class Chatbot {
     private List<String> faqs = new ArrayList<>();
     private List<String> policy;
     
+    /* Main method for testing purposes
+     */
     public static void main(String[] args) {
         Chatbot cb = new Chatbot();
         cb.readAllLines();
         System.out.println(cb.answer("fsdfsfsf"));
     }
     
-  
+    /* Reads all text from faq.txt and stores it in a list
+     */
     public void readAllLines() {
         
         try {
@@ -41,6 +43,10 @@ public class Chatbot {
         }
     }
     
+    /* Separates user's query into keywords
+     * and matches the corresponding question in the list
+     * to its answer. Returns the answer.
+     */
     public String answer(String query) {
         String ans = "";
         ArrayList<String> keywords = extractQueryKeywords(query);
@@ -76,6 +82,8 @@ public class Chatbot {
         return ans;        
     }
     
+    /* Extracts keywords from user's query.
+     */
     public ArrayList<String> extractQueryKeywords(String query) {
         
         ArrayList<String> keywords = new ArrayList<>();
