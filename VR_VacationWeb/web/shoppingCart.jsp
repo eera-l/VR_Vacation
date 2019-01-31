@@ -2,6 +2,8 @@
     Document   : shoppingCart
     Created on : 05/01/2019, 9:14:54 PM
     Author     : Felicity
+    Funct.     : GUI class for the shopping cart.
+                 Displays all items in the shopping cart and total for the order
 --%>
 <%@page import="java.util.TimerTask"%>
 <%@page import="java.util.Timer"%>
