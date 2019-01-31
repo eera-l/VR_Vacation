@@ -2,6 +2,8 @@
     Document   : loading
     Created on : 20-gen-2019, 19.58.29
     Author     : Federica
+    Funct.     : Simulates a loading process by
+                 displaying a loading bar implemented in JavaScript
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
