@@ -2,6 +2,7 @@
     Document   : faq
     Created on : 12-gen-2019, 16.42.01
     Author     : Federica
+    Funct.     : GUI class for the FAQ page
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
