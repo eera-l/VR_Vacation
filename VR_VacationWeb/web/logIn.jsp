@@ -2,6 +2,7 @@
     Document   : logIn.jsp
     Created on : 03/01/2019, 11:32:39 AM
     Author     : Felicity
+    func       : log in  form
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
