@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * ChatBotBean.java
+ * Handles communication between Chatbot logic class
+ * and GUI classes.
  */
 package bean;
 
@@ -14,9 +14,6 @@ import javax.ejb.Stateful;
  */
 @Stateful
 public class ChatBotBean {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     
     public String processUserQuery(String query) {
         
