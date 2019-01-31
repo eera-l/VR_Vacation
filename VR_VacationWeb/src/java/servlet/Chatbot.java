@@ -1,3 +1,9 @@
+/* Chatbot.java
+ * Servlet handling communication with chatbot_jsp.jsp and ChatBotBean.
+ * Forwards user's query to ChatBotBean and returns 
+ * answer to chatbot_jsp.jsp.
+ */
+
 package servlet;
 
 import bean.ChatBotBean;
