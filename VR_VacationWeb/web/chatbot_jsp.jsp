@@ -2,6 +2,7 @@
     Document   : chatbot_jsp
     Created on : 12-gen-2019, 19.09.54
     Author     : Federica
+    Funct.     : GUI class for the chatbot
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
