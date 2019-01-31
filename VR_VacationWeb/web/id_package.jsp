@@ -2,6 +2,8 @@
     Document   : id_package
     Created on : 05/01/2019, 5:42:12 PM
     Author     : Felicity
+    Func       : list specific package with associated experiences,
+                 add package or exp to cart by id
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
