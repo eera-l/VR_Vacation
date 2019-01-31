@@ -2,6 +2,7 @@
     Document   : policy
     Created on : 12-gen-2019, 16.41.41
     Author     : Federica
+    Funct.     : GUI class for policy page
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
