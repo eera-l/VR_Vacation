@@ -2,6 +2,7 @@
     Document   : destinations
     Created on : 03/01/2019, 3:44:54 PM
     Author     : Felicity
+    Func        : list all destinations
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
