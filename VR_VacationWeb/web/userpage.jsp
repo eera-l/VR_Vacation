@@ -2,6 +2,8 @@
     Document   : userpage
     Created on : 20-gen-2019, 20.58.00
     Author     : Federica
+    Funct.     : GUI class for the userpage. Displays
+                 user info and history of orders
 --%>
 
 <%@page import="hibernate.Experience"%>
