@@ -65,7 +65,7 @@ public class LogIn extends HttpServlet {
         } else {
             if (logInBean.authenticateUser(username, password)) {
                 //redirect to home page
-                //TO:DO add username feild to menu - diasble logIn signUp buttons
+                //add username feild to menu - diasble logIn signUp buttons
                 request.setAttribute("userName", username);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
