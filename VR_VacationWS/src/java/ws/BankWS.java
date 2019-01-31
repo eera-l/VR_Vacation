@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * BankWS.java
+ * Funct.: Web service that checks whether the credit card number matches
+ * the hard-coded ones and returns the result.
  */
 package ws;
 
