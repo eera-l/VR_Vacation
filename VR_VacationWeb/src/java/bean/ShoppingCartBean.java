@@ -1,3 +1,11 @@
+/*
+ * ShoppingCartBean.java
+ * Handles all shopping cart functionalities: adding items to the
+ * cart, checking out, sending an email confirmation, sending
+ * confirmation to JSM queue. A timer had started being
+ * implemented to handle popping up of the chatbot if the user stayed idle for long.
+ */
+
 package bean;
 
 import global.DataStorage;
@@ -31,9 +39,6 @@ import javax.naming.InitialContext;
  */
 @Stateful
 public class ShoppingCartBean {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 
     Order order;
     User user;
