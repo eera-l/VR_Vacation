@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * ID_packageBean.java
+ * Handles addition and removal of Experiences from a single Package
+ * and adding the package to the shopping cart.
  */
 package bean;
 
@@ -18,8 +18,6 @@ import javax.ejb.Stateless;
 @Stateless
 public class ID_PackageBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     ArrayList<Experience> experiences = new ArrayList<>();
     hibernate.Package pack;
     
