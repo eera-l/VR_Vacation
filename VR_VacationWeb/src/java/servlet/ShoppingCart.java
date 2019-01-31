@@ -1,3 +1,9 @@
+/* ShoppingCart.java
+ * Handles communication between shoppingcart.jsp
+ * and ShoppingCartBean. Returns appropriate text
+ * whether the cart is empty or full.
+ */
+
 package servlet;
 
 import bean.ShoppingCartBean;
